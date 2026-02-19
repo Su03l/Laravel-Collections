@@ -19,6 +19,7 @@ interface Note {
     updated_at: string;
 }
 
+// link interface for the pagination
 interface Link {
     url: string | null;
     label: string;
