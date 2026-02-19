@@ -26,6 +26,7 @@ interface Link {
     active: boolean;
 }
 
+// pagination interface for the response
 interface Pagination {
     data: Note[];
     links: Link[];
