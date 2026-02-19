@@ -19,6 +19,7 @@ class Note extends Model
         'status'
     ];
 
+    // this for casts the choose the type
     protected $casts = [
         'is_pinned' => 'boolean',
     ];
