@@ -98,6 +98,7 @@ export default function Index({ notes }: Props) {
         }
     };
 
+    // Helpers for Colors
     const getCategoryColor = (category: string) => {
         switch(category) {
             case 'عمل': return 'bg-purple-500/20 text-purple-300 border-purple-500/30';
