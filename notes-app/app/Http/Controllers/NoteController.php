@@ -59,7 +59,7 @@ class NoteController extends Controller
         ]);
     }
 
-    // تحديث نوتة
+    // update the note
     public function update(Request $request, Note $note)
     {
         $request->validate([
