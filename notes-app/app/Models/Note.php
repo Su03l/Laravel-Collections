@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Note extends Model
 {
+    // this for using the factory to use fake
     use HasFactory;
 
     protected $fillable = [
