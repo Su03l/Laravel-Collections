@@ -9,6 +9,7 @@ declare global {
         axios: AxiosInstance;
     }
 
+    // route interface
     var route: any;
 }
 
