@@ -43,7 +43,7 @@ class NoteController extends Controller
             ->with('message', 'Note created successfully!');
     }
 
-    // عرض نوتة واحدة
+    // show note details and
     public function show(Note $note)
     {
         return Inertia::render('Notes/Show', [
