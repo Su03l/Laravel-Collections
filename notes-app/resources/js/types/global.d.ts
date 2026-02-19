@@ -4,6 +4,7 @@ import { Page } from '@inertiajs/core';
 
 // declare global variables
 declare global {
+    // axios instance
     interface Window {
         axios: AxiosInstance;
     }
