@@ -2,6 +2,7 @@ import { AxiosInstance } from 'axios';
 import { PageProps as InertiaPageProps } from '@inertiajs/core';
 import { Page } from '@inertiajs/core';
 
+// declare global variables
 declare global {
     interface Window {
         axios: AxiosInstance;
