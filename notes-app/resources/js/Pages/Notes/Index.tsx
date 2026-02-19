@@ -62,6 +62,7 @@ export default function Index({ notes }: Props) {
         status: 'جديد'
     });
 
+    // Categories and Statuses for filtering
     const categories = ['عام', 'عمل', 'شخصي', 'دراسة', 'أفكار', 'تسوق'];
     const statuses = ['جديد', 'قيد التنفيذ', 'مكتمل', 'معلق'];
 
