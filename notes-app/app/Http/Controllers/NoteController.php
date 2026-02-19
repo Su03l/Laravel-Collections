@@ -20,7 +20,7 @@ class NoteController extends Controller
         ]);
     }
 
-    // عرض صفحة إنشاء نوتة جديدة
+    // create new note
     public function create()
     {
         return Inertia::render('Notes/Create');
