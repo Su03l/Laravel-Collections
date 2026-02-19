@@ -141,6 +141,7 @@ export default function Index({ notes }: Props) {
         setDeletingId(id);
     };
 
+    // Handle Delete
     const handleDelete = () => {
         if (!deletingId) return;
         setIsDeleting(true);
