@@ -121,6 +121,7 @@ export default function Index({ notes }: Props) {
         });
     };
 
+    // Handle Update
     const handleUpdate = (id: number) => {
         if (!id) return;
         setIsUpdating(true);
