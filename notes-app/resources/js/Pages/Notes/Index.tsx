@@ -7,6 +7,7 @@ import {
     Settings, LogOut, Filter, Menu, Eye, AlertTriangle, Clock
 } from 'lucide-react';
 
+// note interface for the request
 interface Note {
     id: number;
     title: string;
