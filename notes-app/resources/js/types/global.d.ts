@@ -13,6 +13,7 @@ declare global {
     var route: any;
 }
 
+// declare page props interface
 declare module '@inertiajs/core' {
     interface PageProps extends InertiaPageProps, Page<PageProps> {
         auth: {
