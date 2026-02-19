@@ -8,10 +8,9 @@ use Inertia\Inertia;
 
 class NoteController extends Controller
 {
-    // عرض كل النوتات
+    // show all notes
     public function index()
     {
-        // ترتيب الملاحظات: المثبتة أولاً، ثم الأحدث
         $notes = Note::orderBy('is_pinned', 'desc')
             ->latest()
             ->paginate(20);
