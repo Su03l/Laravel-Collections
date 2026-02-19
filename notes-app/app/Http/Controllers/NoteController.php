@@ -76,7 +76,7 @@ class NoteController extends Controller
             ->with('message', 'Note updated successfully!');
     }
 
-    // حذف نوتة
+    // deleet the note
     public function destroy(Note $note)
     {
         $note->delete();
