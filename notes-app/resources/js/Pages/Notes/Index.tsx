@@ -136,6 +136,7 @@ export default function Index({ notes }: Props) {
         });
     };
 
+    // Handle Delete
     const confirmDelete = (id: number) => {
         setDeletingId(id);
     };
