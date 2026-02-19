@@ -26,7 +26,7 @@ class NoteController extends Controller
         return Inertia::render('Notes/Create');
     }
 
-    // حفظ نوتة جديدة
+    // store new note
     public function store(Request $request)
     {
         $request->validate([
