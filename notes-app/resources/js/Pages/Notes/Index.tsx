@@ -7,7 +7,7 @@ import {
     Settings, LogOut, Filter, Menu, Eye, AlertTriangle, Clock
 } from 'lucide-react';
 
-// note interface for the request
+//
 interface Note {
     id: number;
     title: string;
@@ -36,6 +36,7 @@ interface Pagination {
     next_page_url: string | null;
 }
 
+//
 interface Props {
     notes: Pagination;
 }
