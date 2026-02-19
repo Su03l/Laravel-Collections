@@ -51,7 +51,7 @@ class NoteController extends Controller
         ]);
     }
 
-    // عرض صفحة تعديل نوتة
+    // EDIT NOTE
     public function edit(Note $note)
     {
         return Inertia::render('Notes/Edit', [
