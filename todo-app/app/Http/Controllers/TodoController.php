@@ -70,6 +70,7 @@ class TodoController extends Controller
         ]);
     }
 
+    // create new todo with categories
     public function store(Request $request)
     {
         $request->validate([
