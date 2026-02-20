@@ -156,6 +156,7 @@ class TodoController extends Controller
             ->with('message', 'Todo status updated!');
     }
 
+    // reorder todos
     public function reorder(Request $request)
     {
         $request->validate([
