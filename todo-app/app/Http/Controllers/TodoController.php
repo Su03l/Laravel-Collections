@@ -36,7 +36,7 @@ class TodoController extends Controller
             });
         }
 
-        // Search
+        // Search by title or description.
         if ($request->has('search') && !empty($request->search)) {
             $search = $request->search;
             $query->where(function ($q) use ($search) {
