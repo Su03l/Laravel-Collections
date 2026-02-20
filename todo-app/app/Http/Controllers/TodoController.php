@@ -124,6 +124,7 @@ class TodoController extends Controller
         // Update the todo.
         $todo->update($request->only(['title', 'description', 'priority', 'due_date']));
 
+        // Attach or detach categories to the todo.
         if ($request->has('categories')) {
             $todo->categories()->sync($request->categories);
         } else {
