@@ -43,33 +43,41 @@
         رتب يومك، حدد أولوياتك، وأنجز مهامك بأسلوب عصري وتفاعلي مع دعم السحب والإفلات والتصنيفات الذكية.
     </p>
 
-    <div class="flex flex-col items-center gap-6 relative z-10 mb-12">
+    <div class="flex flex-wrap gap-4 justify-center relative z-10 mb-12">
         <a href="{{ route('todos.index') }}"
-           class="px-8 py-4 notes-gradient text-white font-bold rounded-xl hover:opacity-90 transition-all active:scale-95 flex items-center gap-2 text-lg">
+           class="px-8 py-4 notes-gradient text-white font-bold rounded-xl hover:opacity-90 transition-all active:scale-95 flex items-center gap-2 text-lg shadow-lg shadow-cyan-500/20">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
             </svg>
             ابدأ التنظيم الآن
         </a>
+    </div>
 
-        <!-- Commands Section -->
-        <div class="flex flex-col gap-2 text-left" dir="ltr">
-            <div class="bg-black/40 border border-white/10 rounded-lg px-4 py-2 font-mono text-sm text-slate-300 flex items-center gap-3">
-                <span class="text-cyan-500">$</span>
-                <span>php artisan serve</span>
+    <!-- Developer Commands Section -->
+    <div class="mb-12 relative z-10 text-right bg-[#1a1a1a] p-6 rounded-2xl border border-white/5 hover:border-cyan-500/20 transition-colors">
+        <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+            أوامر التشغيل (Setup Commands)
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex items-center justify-between bg-black/40 p-4 rounded-xl border border-white/5 hover:border-cyan-500/30 transition-all group">
+                <code class="text-sm text-cyan-400 font-mono font-bold group-hover:text-cyan-300 transition-colors" dir="ltr">php artisan serve</code>
+                <span class="text-xs text-slate-500">تشغيل السيرفر (Backend)</span>
             </div>
-            <div class="bg-black/40 border border-white/10 rounded-lg px-4 py-2 font-mono text-sm text-slate-300 flex items-center gap-3">
-                <span class="text-cyan-500">$</span>
-                <span>npm run dev</span>
+            <div class="flex items-center justify-between bg-black/40 p-4 rounded-xl border border-white/5 hover:border-cyan-500/30 transition-all group">
+                <code class="text-sm text-cyan-400 font-mono font-bold group-hover:text-cyan-300 transition-colors" dir="ltr">npm run dev</code>
+                <span class="text-xs text-slate-500">تشغيل الواجهة (Frontend)</span>
             </div>
         </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-right relative z-10">
         <div
-            class="p-6 bg-[#1a1a1a] rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-all">
-            <div class="text-cyan-500 mb-4 flex justify-center md:justify-start">
+            class="p-6 bg-[#1a1a1a] rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-all group">
+            <div class="text-cyan-500 mb-4 flex justify-center md:justify-start group-hover:scale-110 transition-transform">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
@@ -79,8 +87,8 @@
             <p class="text-sm text-slate-400">رتب مهامك وأولوياتك بسهولة تامة عبر السحب والإفلات.</p>
         </div>
         <div
-            class="p-6 bg-[#1a1a1a] rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-all">
-            <div class="text-cyan-400 mb-4 flex justify-center md:justify-start">
+            class="p-6 bg-[#1a1a1a] rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-all group">
+            <div class="text-cyan-400 mb-4 flex justify-center md:justify-start group-hover:scale-110 transition-transform">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
@@ -90,8 +98,8 @@
             <p class="text-sm text-slate-400">نظم مهامك باستخدام تصنيفات ملونة (عمل، شخصي، رياضة...).</p>
         </div>
         <div
-            class="p-6 bg-[#1a1a1a] rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-all">
-            <div class="text-cyan-600 mb-4 flex justify-center md:justify-start">
+            class="p-6 bg-[#1a1a1a] rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-all group">
+            <div class="text-cyan-600 mb-4 flex justify-center md:justify-start group-hover:scale-110 transition-transform">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
