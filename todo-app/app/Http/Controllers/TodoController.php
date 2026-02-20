@@ -49,6 +49,7 @@ class TodoController extends Controller
         $todos = $query->get();
         $categories = Category::all();
 
+        // Render the view.
         return Inertia::render('Todos/Index', [
             'todos' => $todos,
             'categories' => $categories,
