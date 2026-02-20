@@ -45,6 +45,7 @@ class TodoController extends Controller
             });
         }
 
+        // Get all todos and categories.
         $todos = $query->get();
         $categories = Category::all();
 
