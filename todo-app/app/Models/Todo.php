@@ -10,6 +10,7 @@ class Todo extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
         'title',
         'description',
@@ -24,6 +25,7 @@ class Todo extends Model
         'due_date' => 'date'
     ];
 
+    // every todo has many categories
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class, 'category_todo');
