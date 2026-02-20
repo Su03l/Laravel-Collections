@@ -99,6 +99,7 @@ class TodoController extends Controller
             ->with('message', 'Todo created successfully!');
     }
 
+    // get single todo with categories
     public function edit(Todo $todo)
     {
         $todo->load('categories');
