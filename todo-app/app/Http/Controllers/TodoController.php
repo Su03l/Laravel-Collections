@@ -121,6 +121,7 @@ class TodoController extends Controller
             'categories.*' => 'exists:categories,id'
         ]);
 
+        // Update the todo.
         $todo->update($request->only(['title', 'description', 'priority', 'due_date']));
 
         if ($request->has('categories')) {
