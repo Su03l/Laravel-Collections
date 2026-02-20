@@ -43,7 +43,7 @@
         رتب يومك، حدد أولوياتك، وأنجز مهامك بأسلوب عصري وتفاعلي مع دعم السحب والإفلات والتصنيفات الذكية.
     </p>
 
-    <div class="flex flex-wrap gap-4 justify-center relative z-10 mb-12">
+    <div class="flex flex-col items-center gap-6 relative z-10 mb-12">
         <a href="{{ route('todos.index') }}"
            class="px-8 py-4 notes-gradient text-white font-bold rounded-xl hover:opacity-90 transition-all active:scale-95 flex items-center gap-2 text-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -52,6 +52,18 @@
             </svg>
             ابدأ التنظيم الآن
         </a>
+
+        <!-- Commands Section -->
+        <div class="flex flex-col gap-2 text-left" dir="ltr">
+            <div class="bg-black/40 border border-white/10 rounded-lg px-4 py-2 font-mono text-sm text-slate-300 flex items-center gap-3">
+                <span class="text-cyan-500">$</span>
+                <span>php artisan serve</span>
+            </div>
+            <div class="bg-black/40 border border-white/10 rounded-lg px-4 py-2 font-mono text-sm text-slate-300 flex items-center gap-3">
+                <span class="text-cyan-500">$</span>
+                <span>npm run dev</span>
+            </div>
+        </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-right relative z-10">
