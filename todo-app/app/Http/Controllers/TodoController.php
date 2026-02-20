@@ -9,6 +9,7 @@ use Inertia\Inertia;
 
 class TodoController extends Controller
 {
+    // get all todos with categories
     public function index(Request $request)
     {
         $query = Todo::with('categories')->orderBy('order', 'asc')->orderBy('created_at', 'desc');
