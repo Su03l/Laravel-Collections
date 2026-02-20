@@ -62,6 +62,7 @@ class TodoController extends Controller
         ]);
     }
 
+    // get single todo with categories
     public function create()
     {
         return Inertia::render('Todos/Create', [
