@@ -170,6 +170,7 @@ class TodoController extends Controller
             Todo::where('id', $item['id'])->update(['order' => $item['order']]);
         }
 
+        // Redirect to the index page.
         return redirect()->back()->with('message', 'Order updated successfully');
     }
 }
