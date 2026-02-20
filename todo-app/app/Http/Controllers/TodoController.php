@@ -90,6 +90,7 @@ class TodoController extends Controller
             'order' => Todo::max('order') + 1
         ]);
 
+        // Attach categories to the todo.
         if ($request->has('categories')) {
             $todo->categories()->attach($request->categories);
         }
