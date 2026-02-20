@@ -12,6 +12,7 @@ class TodoController extends Controller
     // get all todos with categories
     public function index(Request $request)
     {
+        // get all todos with categories
         $query = Todo::with('categories')->orderBy('order', 'asc')->orderBy('created_at', 'desc');
 
         // Filter by status
