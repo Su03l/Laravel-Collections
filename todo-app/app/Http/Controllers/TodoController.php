@@ -15,7 +15,7 @@ class TodoController extends Controller
         // get all todos with categories
         $query = Todo::with('categories')->orderBy('order', 'asc')->orderBy('created_at', 'desc');
 
-        // Filter by status
+        // Filter by status.
         if ($request->has('filter')) {
             if ($request->filter === 'completed') {
                 $query->where('completed', true);
