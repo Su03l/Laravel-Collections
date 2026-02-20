@@ -145,6 +145,7 @@ class TodoController extends Controller
             ->with('message', 'Todo deleted successfully!');
     }
 
+    // toggle todo status
     public function toggleComplete(Todo $todo)
     {
         $todo->update([
