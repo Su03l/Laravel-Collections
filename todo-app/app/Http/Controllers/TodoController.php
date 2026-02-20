@@ -109,6 +109,7 @@ class TodoController extends Controller
         ]);
     }
 
+    // update todo with categories
     public function update(Request $request, Todo $todo)
     {
         $request->validate([
