@@ -24,7 +24,7 @@ class TodoController extends Controller
             }
         }
 
-        // Filter by priority
+        // Filter by priority.
         if ($request->has('priority') && $request->priority !== 'all') {
             $query->where('priority', $request->priority);
         }
