@@ -136,6 +136,7 @@ class TodoController extends Controller
             ->with('message', 'Todo updated successfully!');
     }
 
+    // delete todo with categories
     public function destroy(Todo $todo)
     {
         $todo->delete();
