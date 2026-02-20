@@ -20,6 +20,7 @@ class Todo extends Model
         'order'
     ];
 
+    //
     protected $casts = [
         'completed' => 'boolean',
         'due_date' => 'date'

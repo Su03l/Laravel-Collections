@@ -27,6 +27,7 @@ interface Props extends PageProps {
     filters: TodoFilters;
 }
 
+// Sortable Todo Item
 function SortableTodoItem({ todo, toggleComplete, setDeleteConfirm, getPriorityColor }: any) {
     const {
         attributes,
