@@ -165,6 +165,7 @@ class TodoController extends Controller
             'order.*.order' => 'required|integer'
         ]);
 
+        // Update the order of each todo.
         foreach ($request->order as $item) {
             Todo::where('id', $item['id'])->update(['order' => $item['order']]);
         }
