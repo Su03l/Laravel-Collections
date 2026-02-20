@@ -29,7 +29,7 @@ class TodoController extends Controller
             $query->where('priority', $request->priority);
         }
 
-        // Filter by category
+        // Filter by category.
         if ($request->has('category') && $request->category !== 'all') {
             $query->whereHas('categories', function ($q) use ($request) {
                 $q->where('categories.id', $request->category);
