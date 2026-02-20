@@ -131,6 +131,7 @@ class TodoController extends Controller
             $todo->categories()->detach();
         }
 
+        // Redirect to the index page.
         return redirect()->route('todos.index')
             ->with('message', 'Todo updated successfully!');
     }
