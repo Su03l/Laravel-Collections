@@ -23,7 +23,7 @@ class HabitController extends Controller
     // index method for displaying habits list
     public function index()
     {
-        // جلب عادات المستخدم مع سجلات آخر 7 أيام
+        // get habits with latest logs for the last 7 days
         $habits = auth()->user()->habits()
             ->with(['logs' => function ($query) {
                 $query->whereDate('completed_date', '>=', Carbon::today()->subDays(6));
