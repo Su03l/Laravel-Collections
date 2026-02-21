@@ -11,6 +11,7 @@ use Carbon\Carbon;
 
 class HabitController extends Controller
 {
+    // this for testing
     protected $streakService;
 
     public function __construct(StreakService $streakService)
