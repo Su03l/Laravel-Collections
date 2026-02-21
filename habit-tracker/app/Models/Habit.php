@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Habit extends Model
 {
+
     use HasUuids;
 
     protected $fillable = [
@@ -15,6 +16,7 @@ class Habit extends Model
         'user_id', 'current_streak', 'best_streak'
     ];
 
+    // evey habbit has many logs
     public function logs(): HasMany
     {
         return $this->hasMany(HabitLog::class);
