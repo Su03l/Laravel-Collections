@@ -20,6 +20,7 @@ class HabitController extends Controller
         $this->streakService = $streakService;
     }
 
+    // index method for displaying habits list
     public function index()
     {
         // جلب عادات المستخدم مع سجلات آخر 7 أيام
