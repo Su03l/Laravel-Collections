@@ -6,6 +6,7 @@ import { toast } from 'sonner';
 
 export default function Stats({ stats }) {
 
+    // تفعيل التنبيهات
     const enableNotifications = () => {
         if (!("Notification" in window)) {
             toast.error("هذا المتصفح لا يدعم التنبيهات");
