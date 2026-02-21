@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class HabitLog extends Model
 {
+    // the req
     protected $fillable = ['habit_id', 'completed_date', 'completed'];
 
     protected $casts = [
