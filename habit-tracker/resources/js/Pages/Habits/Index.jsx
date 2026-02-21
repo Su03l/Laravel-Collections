@@ -245,6 +245,7 @@ export default function Index({ habits }) {
     );
 }
 
+//
 function StatCard({ title, value, icon }) {
     return (
         <div className="bg-[#242424]/50 backdrop-blur-md p-8 rounded-[2.5rem] border border-white/5 hover:border-white/10 transition-all">
