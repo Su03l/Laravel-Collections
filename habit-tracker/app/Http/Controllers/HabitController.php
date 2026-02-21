@@ -58,7 +58,7 @@ class HabitController extends Controller
         $user = auth()->user();
         $message = '';
 
-        // ابحث عن سجل اليوم أو أنشئ واحداً جديداً
+        // search for the log for today
         $log = $habit->logs()->whereDate('completed_date', $today)->first();
 
         if ($log) {
