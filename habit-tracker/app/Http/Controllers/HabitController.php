@@ -121,6 +121,7 @@ class HabitController extends Controller
         ]);
     }
 
+    // show method for displaying a single habit
     public function export()
     {
         $habits = auth()->user()->habits()->with('logs')->get();
