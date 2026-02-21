@@ -21,24 +21,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // تسجيل دخول تلقائي لأول مستخدم في قاعدة البيانات (لأغراض التطوير فقط)
-        if (app()->environment('local')) {
-            try {
-                $user = User::first();
-                if ($user) {
-                    Auth::login($user);
-                } else {
-                    // إنشاء مستخدم افتراضي إذا لم يوجد
-                    $user = User::create([
-                        'name' => 'Test User',
-                        'email' => 'test@example.com',
-                        'password' => bcrypt('password'),
-                    ]);
-                    Auth::login($user);
-                }
-            } catch (\Exception $e) {
-                // تجاهل الخطأ في حالة عدم وجود الجداول بعد
-            }
-        }
+
     }
 }
