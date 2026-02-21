@@ -14,6 +14,7 @@ class HabitController extends Controller
     // this for testing
     protected $streakService;
 
+    // the constructor
     public function __construct(StreakService $streakService)
     {
         $this->streakService = $streakService;
