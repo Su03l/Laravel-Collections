@@ -7,6 +7,7 @@ use Carbon\Carbon;
 
 class StreakService
 {
+    // to calculate the streak
     public function calculateStreak(Habit $habit)
     {
         $streak = 0;
