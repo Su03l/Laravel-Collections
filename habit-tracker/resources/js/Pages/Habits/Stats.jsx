@@ -133,7 +133,7 @@ export default function Stats({ stats }) {
                                 <div className="w-24 h-24 bg-[#0ea5e9]/10 border-2 border-[#0ea5e9] rounded-[2rem] flex items-center justify-center text-[#0ea5e9] shadow-[0_0_20px_rgba(14,165,233,0.2)] transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                                     <Flame size={48} strokeWidth={1.5} />
                                 </div>
-                                <span className="text-sm font-black text-white mt-2">أسبوع نار! 🔥</span>
+                                <span className="text-sm font-black text-white mt-2">أسبوع نار! </span>
                                 <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">7 أيام متتالية</span>
                             </div>
                         ) : (
