@@ -13,9 +13,10 @@ export default function Stats({ stats }) {
             return;
         }
 
+        //
         Notification.requestPermission().then(permission => {
             if (permission === "granted") {
-                new Notification("HabitSync مفعّل! 🚀", {
+                new Notification("HabitSync مفعّل! ", {
                     body: "سنقوم بتذكيرك بعاداتك يومياً لنحافظ على الـ Streak.",
                     // icon: "/logo-blue.png" // يمكن إضافة أيقونة لاحقاً
                 });
