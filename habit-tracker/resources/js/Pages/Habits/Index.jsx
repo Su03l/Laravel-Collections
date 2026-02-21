@@ -31,6 +31,7 @@ export default function Index({ habits }) {
         });
     };
 
+    //
     const playSuccessSound = () => {
         const audio = new Audio('/sounds/success-pop.mp3'); // ملف صغير جداً
         audio.volume = 0.2;
