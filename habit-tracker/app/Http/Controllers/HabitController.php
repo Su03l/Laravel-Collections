@@ -51,6 +51,7 @@ class HabitController extends Controller
         return redirect()->route('habits.index')->with('message', 'تم إضافة العادة بنجاح!');
     }
 
+    // show method for displaying a single habit
     public function toggleLog(Habit $habit)
     {
         $today = Carbon::today()->toDateString();
