@@ -36,6 +36,7 @@ class HabitController extends Controller
         ]);
     }
 
+    // show method for displaying a single habit
     public function store(Request $request)
     {
         $data = $request->validate([
