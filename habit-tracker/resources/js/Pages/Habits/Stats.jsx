@@ -140,7 +140,6 @@ export default function Stats({ stats }) {
                             <p className="text-gray-500 font-medium">استمر في عاداتك لمدة 7 أيام لفتح أول وسام!</p>
                         )}
 
-                        {/* يمكن إضافة المزيد من الشروط هنا */}
                     </div>
                 </div>
             </div>
