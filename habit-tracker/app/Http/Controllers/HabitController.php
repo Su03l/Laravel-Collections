@@ -96,6 +96,7 @@ class HabitController extends Controller
         return redirect()->back()->with('message', $message);
     }
 
+    // show method for displaying a single habit
     public function stats()
     {
         $stats = auth()->user()->habits()->withCount(['logs as completed_count' => function ($query) {
