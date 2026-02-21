@@ -3,6 +3,7 @@ import { Head, useForm, router, usePage } from '@inertiajs/react';
 import { Plus, Check, Flame, Trophy, Activity, Calendar, X, Save, BarChart3 } from 'lucide-react';
 import { Toaster, toast } from 'sonner';
 
+//
 export default function Index({ habits }) {
     const { flash, auth } = usePage().props;
     const [showModal, setShowModal] = useState(false); // حالة إظهار المودال
