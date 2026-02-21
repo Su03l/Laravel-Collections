@@ -24,7 +24,6 @@
 </head>
 <body class="bg-[#1a1a1a] min-h-screen flex items-center justify-center p-4 overflow-hidden relative">
 
-    <!-- Dot Pattern Background -->
     <div class="absolute inset-0 z-0 opacity-20"
          style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;">
     </div>
