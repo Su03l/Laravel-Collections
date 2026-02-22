@@ -24,6 +24,7 @@ class ChangePasswordController extends Controller
 
         $user = $request->user();
 
+        // check current password
         if (!Hash::check($request->current_password, $user->password)) {
             return $this->error(null, 'كلمة المرور الحالية غير صحيحة', 400);
         }
