@@ -12,6 +12,7 @@ class ResetPasswordController extends Controller
 {
     use HttpResponses;
 
+    // this for store /api/reset-password
     public function __invoke(Request $request)
     {
         $request->validate([
