@@ -12,6 +12,7 @@ class AvatarController extends Controller
 {
     use HttpResponses;
 
+    // this for store /api/patient/avatar
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [
