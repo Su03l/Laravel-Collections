@@ -10,6 +10,7 @@ class LogoutController extends Controller
 {
     use HttpResponses;
 
+    // this for store /api/logout
     public function __invoke(Request $request)
     {
         $request->user()->currentAccessToken()->delete();
