@@ -23,6 +23,7 @@ class ResetPasswordController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
+        // التحقق من صحة OTP
         if ($user->otp !== $request->otp || now()->greaterThan($user->otp_expires_at)) {
             return $this->error(null, 'رمز التحقق غير صحيح أو منتهي الصلاحية', 400);
         }
