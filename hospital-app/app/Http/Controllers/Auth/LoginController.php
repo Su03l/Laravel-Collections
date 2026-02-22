@@ -51,6 +51,7 @@ class LoginController extends Controller
             'user_agent' => $request->userAgent(),
         ]);
 
+        //
         try {
             Mail::to($user->email)->send(new SecurityAlertMail($user, 'login', [
                 'ip' => $request->ip(),
