@@ -28,6 +28,7 @@ class LoginController extends Controller
             return $this->error(null, 'بيانات الدخول غير صحيحة', 401);
         }
 
+        // check for
         if (!$user->email_verified_at) {
             $otp = rand(100000, 999999);
             $user->update(['otp' => $otp, 'otp_expires_at' => now()->addMinutes(10)]);
@@ -35,6 +36,7 @@ class LoginController extends Controller
             return $this->error(null, 'يرجى تفعيل حسابك أولاً. تم إرسال رمز جديد.', 403);
         }
 
+        //
         if ($user->two_factor_enabled) {
             $otp = rand(100000, 999999);
             $user->update(['otp' => $otp, 'otp_expires_at' => now()->addMinutes(5)]);
