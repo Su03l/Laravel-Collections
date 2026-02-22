@@ -18,6 +18,7 @@ class LoginController extends Controller
 {
     use HttpResponses;
 
+    // this for store /api/login
     public function __invoke(LoginRequest $request)
     {
         $user = User::where('email', $request->email)->first();
