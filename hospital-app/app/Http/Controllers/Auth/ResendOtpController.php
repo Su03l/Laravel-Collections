@@ -32,6 +32,7 @@ class ResendOtpController extends Controller
             'otp_expires_at' => $expiresAt
         ]);
 
+        // send the mail
         Mail::to($user->email)->send(new OTPMail($user, $otp));
 
         return $this->success([
