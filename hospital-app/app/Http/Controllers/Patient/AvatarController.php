@@ -20,6 +20,7 @@ class AvatarController extends Controller
             'avatar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
+        // validate the request
         if ($validator->fails()) {
             return $this->error($validator->errors(), 'خطأ في الصورة', 422);
         }
