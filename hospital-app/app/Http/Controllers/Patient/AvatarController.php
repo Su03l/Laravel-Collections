@@ -32,6 +32,7 @@ class AvatarController extends Controller
             Storage::disk('public')->delete($user->avatar);
         }
 
+        // حفظ الصورة
         $path = $request->file('avatar')->store('avatars', 'public');
         $user->update(['avatar' => $path]);
 
