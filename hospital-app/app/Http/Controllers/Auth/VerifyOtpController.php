@@ -50,6 +50,7 @@ class VerifyOtpController extends Controller
             'user_agent' => $request->userAgent(),
         ]);
 
+        // create the token
         $token = $user->createToken('API Token')->plainTextToken;
 
         return $this->success([
