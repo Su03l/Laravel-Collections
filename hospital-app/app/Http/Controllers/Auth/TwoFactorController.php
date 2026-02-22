@@ -10,6 +10,7 @@ class TwoFactorController extends Controller
 {
     use HttpResponses;
 
+    // this for store /api/two-factor
     public function __invoke(Request $request)
     {
         $user = $request->user();
