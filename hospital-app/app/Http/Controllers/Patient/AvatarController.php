@@ -15,6 +15,7 @@ class AvatarController extends Controller
     // this for store /api/patient/avatar
     public function update(Request $request)
     {
+        // check the request file
         $validator = Validator::make($request->all(), [
             'avatar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
