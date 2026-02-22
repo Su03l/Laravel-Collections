@@ -36,7 +36,7 @@ class LoginController extends Controller
             return $this->error(null, 'يرجى تفعيل حسابك أولاً. تم إرسال رمز جديد.', 403);
         }
 
-        //
+        // check for 2fa
         if ($user->two_factor_enabled) {
             $otp = rand(100000, 999999);
             $user->update(['otp' => $otp, 'otp_expires_at' => now()->addMinutes(5)]);
