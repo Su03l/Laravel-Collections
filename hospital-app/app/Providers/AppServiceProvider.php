@@ -1,0 +1,47 @@
+<?php
+
+namespace App\Providers;
+
+use Dedoc\Scramble\Scramble;
+use Dedoc\Scramble\Support\Generator\OpenApi;
+use Dedoc\Scramble\Support\Generator\SecurityScheme;
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Validation\Rules\Password;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any application services.
+     */
+    public function register(): void
+    {
+        //
+    }
+
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
+    {
+        Password::defaults(function () {
+            return Password::min(8)
+                ->letters()
+                ->numbers()
+                ->symbols()
+                ->uncompromised();
+        });
+
+        RateLimiter::for('otp-requests', function (Request $request) {
+            return Limit::perMinute(3)->by($request->ip()); // 3 طلبات فقط في الدقيقة لكل IP
+        });
+
+        Scramble::afterOpenApiGenerated(function (OpenApi $openApi) {
+            $openApi->secure(
+                SecurityScheme::http('bearer')
+            );
+        });
+    }
+}
