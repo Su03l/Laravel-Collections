@@ -22,6 +22,7 @@ class VerifyOtpController extends Controller
             'otp' => 'required|string|size:6',
         ]);
 
+        // التحقق من صحة OTP
         $user = User::where('email', $request->email)->first();
 
         if ($user->otp !== $request->otp || now()->greaterThan($user->otp_expires_at)) {
