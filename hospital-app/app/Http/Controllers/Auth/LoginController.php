@@ -44,6 +44,7 @@ class LoginController extends Controller
             return $this->success(['requires_2fa' => true, 'message' => 'يرجى إدخال رمز التحقق الثنائي']);
         }
 
+        // login user
         LoginActivity::create([
             'user_id' => $user->id,
             'ip_address' => $request->ip(),
