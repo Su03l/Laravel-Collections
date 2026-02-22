@@ -13,6 +13,7 @@ class ForgotPasswordController extends Controller
 {
     use HttpResponses;
 
+    // this for store /api/forgot-password
     public function __invoke(ForgotPasswordRequest $request)
     {
         $user = User::where('email', $request->email)->first();
