@@ -14,6 +14,7 @@ class VerifyOtpController extends Controller
 {
     use HttpResponses;
 
+    // this for store /api/verify-otp
     public function __invoke(Request $request)
     {
         $request->validate([
