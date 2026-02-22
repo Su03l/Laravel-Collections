@@ -23,6 +23,7 @@ class LoginController extends Controller
     {
         $user = User::where('email', $request->email)->first();
 
+        // check email and password
         if (!$user || !Hash::check($request->password, $user->password)) {
             return $this->error(null, 'بيانات الدخول غير صحيحة', 401);
         }
