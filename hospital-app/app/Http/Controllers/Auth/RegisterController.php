@@ -15,6 +15,7 @@ class RegisterController extends Controller
 {
     use HttpResponses;
 
+    // this for store /api/register
     public function __invoke(RegisterRequest $request)
     {
         $otp = rand(100000, 999999); // توليد OTP
