@@ -67,6 +67,6 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function ()
     // clinics management
     Route::post('/clinics', [AdminClinicController::class, 'store']);
 
-    // إدارة المستخدمين (حظر/تفعيل)
+    // users management
     Route::patch('/users/{user}/toggle-status', [UserManagementController::class, 'toggleStatus']);
 });
