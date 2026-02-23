@@ -19,7 +19,7 @@ class UserResource extends JsonResource
             'two_factor_enabled' => (bool) $this->two_factor_enabled,
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
 
-            // يظهر فقط للمريض
+            // show only for patient
             'medical_info' => $this->when($this->role === 'patient', function () {
                 return new PatientProfileResource($this->whenLoaded('patientProfile'));
             }),
