@@ -64,7 +64,7 @@ Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function ()
     Route::post('/doctors', [DoctorManagementController::class, 'store']);
     Route::post('/doctors/{doctor}/schedule', [DoctorManagementController::class, 'updateSchedule']);
 
-    // إدارة العيادات
+    // clinics management
     Route::post('/clinics', [AdminClinicController::class, 'store']);
 
     // إدارة المستخدمين (حظر/تفعيل)
