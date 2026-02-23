@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\Api\Admin\AdminClinicController;
+use App\Http\Controllers\Api\Admin\DoctorManagementController;
+use App\Http\Controllers\Api\Admin\UserManagementController;
+use App\Http\Controllers\Api\DoctorController;
+use App\Http\Controllers\Api\HospitalController;
 use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -22,6 +27,13 @@ Route::middleware('throttle:10,1')->group(function () {
     Route::post('/reset-password', ResetPasswordController::class);
 });
 
+// Public Routes (No Auth Required)
+Route::get('/hospitals', [HospitalController::class, 'index']);
+Route::get('/clinics', [HospitalController::class, 'getClinics']);
+Route::get('/doctors', [DoctorController::class, 'index']);
+Route::get('/doctors/{doctor}', [DoctorController::class, 'show']);
+Route::post('/doctors/{doctor}/slots', [DoctorController::class, 'availableSlots']);
+
 // OTP Verification with stricter Rate Limiting (3 attempts per 5 minutes)
 Route::middleware('throttle:3,5')->group(function () {
     Route::post('/verify-otp', VerifyOtpController::class);
@@ -42,4 +54,20 @@ Route::middleware(['auth:sanctum', '2fa'])->group(function () {
     Route::get('/user', function (Request $request) {
         return new \App\Http\Resources\UserResource($request->user()->load('patientProfile'));
     });
+});
+
+// Admin Routes
+Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function () {
+    // إحصائيات
+    Route::get('/stats', [DoctorManagementController::class, 'dashboardStats']);
+
+    // إدارة الدكاترة
+    Route::post('/doctors', [DoctorManagementController::class, 'store']);
+    Route::post('/doctors/{doctor}/schedule', [DoctorManagementController::class, 'updateSchedule']);
+
+    // إدارة العيادات
+    Route::post('/clinics', [AdminClinicController::class, 'store']);
+
+    // إدارة المستخدمين (حظر/تفعيل)
+    Route::patch('/users/{user}/toggle-status', [UserManagementController::class, 'toggleStatus']);
 });

@@ -24,6 +24,7 @@ class User extends Authenticatable
         'otp_expires_at',
         'two_factor_enabled',
         'role',
+        'is_active',
         'email_verified_at',
     ];
 
@@ -40,11 +41,17 @@ class User extends Authenticatable
             'password' => 'hashed',
             'otp_expires_at' => 'datetime',
             'two_factor_enabled' => 'boolean',
+            'is_active' => 'boolean',
         ];
     }
 
     public function patientProfile()
     {
         return $this->hasOne(PatientProfile::class);
+    }
+
+    public function doctorProfile()
+    {
+        return $this->hasOne(Doctor::class, 'id');
     }
 }
