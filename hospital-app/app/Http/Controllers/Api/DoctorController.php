@@ -13,6 +13,7 @@ class DoctorController extends Controller
     // show all doctors
     public function index(Request $request)
     {
+        // get
         $query = Doctor::with(['hospital', 'clinic']);
 
         if ($request->has('hospital_id')) {
