@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 class DoctorController extends Controller
 {
+    // show all doctors
     public function index(Request $request)
     {
         $query = Doctor::with(['hospital', 'clinic']);
