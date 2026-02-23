@@ -24,7 +24,7 @@ class UserResource extends JsonResource
                 return new PatientProfileResource($this->whenLoaded('patientProfile'));
             }),
 
-            // يظهر فقط للدكتور
+            // show doctor details
             'doctor_details' => $this->when($this->role === 'doctor', function () {
                 return $this->doctorProfile ? [
                     'specialty' => $this->doctorProfile->specialization,
