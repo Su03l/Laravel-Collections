@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminClinicController extends Controller
 {
+    // store clinic data from admin
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
