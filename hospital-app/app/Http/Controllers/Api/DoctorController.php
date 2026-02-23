@@ -29,6 +29,7 @@ class DoctorController extends Controller
         return $this->success(DoctorResource::collection($doctors), 'قائمة الدكاترة جاهزة');
     }
 
+    // show doctor details
     public function show(Doctor $doctor)
     {
         $doctor->load(['hospital', 'clinic', 'schedules']);
