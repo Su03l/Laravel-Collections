@@ -60,7 +60,7 @@ Route::middleware(['auth:sanctum', '2fa'])->group(function () {
 Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function () {
     Route::get('/stats', [DoctorManagementController::class, 'dashboardStats']);
 
-    // إدارة الدكاترة
+    // doctors management
     Route::post('/doctors', [DoctorManagementController::class, 'store']);
     Route::post('/doctors/{doctor}/schedule', [DoctorManagementController::class, 'updateSchedule']);
 
