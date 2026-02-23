@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Storage;
 
 trait UploadTrait
 {
+    // uploade image to server
     public function uploadImage($file, $folder, $oldFile = null)
     {
         // إذا فيه صورة قديمة، احذفها من السيرفر فوراً
