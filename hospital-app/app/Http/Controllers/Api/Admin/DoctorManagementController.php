@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 class DoctorManagementController extends Controller
 {
+    // show all doctors from admin
     public function dashboardStats()
     {
         $stats = [
