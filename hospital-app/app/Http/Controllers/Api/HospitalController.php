@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 class HospitalController extends Controller
 {
+    // show all hospitals
     public function index()
     {
         $hospitals = Hospital::all();
