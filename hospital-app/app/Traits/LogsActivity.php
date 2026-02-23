@@ -19,6 +19,7 @@ trait LogsActivity
             Log::info("تم إنشاء موديل جديد " . class_basename($model) . " بالمعرف " . $model->id);
         });
 
+        // delete model
         static::deleted(function ($model) {
             Log::info("تم حذف الموديل " . class_basename($model) . " بالمعرف " . $model->id);
         });
