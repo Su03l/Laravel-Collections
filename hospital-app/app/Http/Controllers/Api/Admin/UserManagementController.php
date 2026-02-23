@@ -11,6 +11,7 @@ class UserManagementController extends Controller
     // toggle user status from admin
     public function toggleStatus(User $user)
     {
+        // check if the user is admin
         if ($user->role === 'admin') {
             return $this->error('لا يمكنك حظر أدمن آخر من هنا', 403);
         }
