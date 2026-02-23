@@ -18,6 +18,7 @@ class HospitalController extends Controller
         return $this->success(HospitalResource::collection($hospitals), 'قائمة المستشفيات');
     }
 
+    // show all clinics
     public function getClinics()
     {
         $clinics = Clinic::all();
