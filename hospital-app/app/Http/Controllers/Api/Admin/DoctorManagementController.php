@@ -68,6 +68,7 @@ class DoctorManagementController extends Controller
         return $this->success($doctor, 'تم إضافة الدكتور وتعيينه بنجاح');
     }
 
+    // update doctor data from admin
     public function updateSchedule(Request $request, $doctorId)
     {
         $validator = Validator::make($request->all(), [
