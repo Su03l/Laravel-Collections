@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class UserManagementController extends Controller
 {
+    // toggle user status from admin
     public function toggleStatus(User $user)
     {
         if ($user->role === 'admin') {
