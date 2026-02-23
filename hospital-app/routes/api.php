@@ -58,7 +58,6 @@ Route::middleware(['auth:sanctum', '2fa'])->group(function () {
 
 // Admin Routes
 Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function () {
-    // إحصائيات
     Route::get('/stats', [DoctorManagementController::class, 'dashboardStats']);
 
     // إدارة الدكاترة
