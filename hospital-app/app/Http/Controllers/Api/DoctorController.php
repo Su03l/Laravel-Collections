@@ -36,6 +36,7 @@ class DoctorController extends Controller
         return $this->success(new DoctorResource($doctor), 'تفاصيل الدكتور جاهزة');
     }
 
+    // show available slots for a doctor on a specific date
     public function availableSlots(Request $request, Doctor $doctor)
     {
         $validator = Validator::make($request->all(), [
