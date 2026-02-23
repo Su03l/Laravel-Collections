@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Log;
 
 trait LogsActivity
 {
+    // this for boot logs activity
     protected static function bootLogsActivity()
     {
         static::updated(function ($model) {
