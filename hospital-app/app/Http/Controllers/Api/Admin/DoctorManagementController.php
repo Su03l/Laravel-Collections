@@ -26,6 +26,7 @@ class DoctorManagementController extends Controller
         return $this->success($stats, 'إحصائيات النظام');
     }
 
+    // store doctor data from admin
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
