@@ -9,6 +9,7 @@ trait LogsActivity
     // this for boot logs activity
     protected static function bootLogsActivity()
     {
+        // update the model
         static::updated(function ($model) {
             Log::info("تم تحديث الموديل " . class_basename($model) . " بالمعرف " . $model->id);
         });
