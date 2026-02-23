@@ -14,6 +14,7 @@ trait LogsActivity
             Log::info("تم تحديث الموديل " . class_basename($model) . " بالمعرف " . $model->id);
         });
 
+        // create new model
         static::created(function ($model) {
             Log::info("تم إنشاء موديل جديد " . class_basename($model) . " بالمعرف " . $model->id);
         });
