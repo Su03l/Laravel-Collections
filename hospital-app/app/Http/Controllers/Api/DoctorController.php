@@ -53,6 +53,7 @@ class DoctorController extends Controller
         $dayName = date('l', strtotime($request->date));
         $schedule = $doctor->schedules()->where('day_of_week', $dayName)->first();
 
+        // if no schedule found return error
         if (!$schedule) {
             return $this->success([], 'الدكتور لا يعمل في هذا اليوم');
         }
