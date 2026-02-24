@@ -44,6 +44,7 @@ class DoctorController extends Controller
             'date' => 'required|date|after_or_equal:today',
         ]);
 
+        // if validation fails return error
         if ($validator->fails()) {
             return $this->error($validator->errors(), 422);
         }
