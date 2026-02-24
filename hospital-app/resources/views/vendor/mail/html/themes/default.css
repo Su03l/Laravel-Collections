@@ -9,7 +9,7 @@ body *:not(html):not(style):not(br):not(tr):not(code) {
 
 body {
     -webkit-text-size-adjust: none;
-    background-color: #F0F9FF; /* خلفية سماوية فاتحة جداً */
+    background-color: #F0F9FF;
     color: #334155;
     height: 100%;
     line-height: 1.4;
