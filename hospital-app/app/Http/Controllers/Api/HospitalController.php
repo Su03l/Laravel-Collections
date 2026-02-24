@@ -24,5 +24,4 @@ class HospitalController extends Controller
         $clinics = Clinic::all();
         return $this->success(ClinicResource::collection($clinics), 'قائمة التخصصات');
     }
-    public function show ()
 }
