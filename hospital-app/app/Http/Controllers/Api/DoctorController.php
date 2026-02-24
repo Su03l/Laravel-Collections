@@ -39,6 +39,7 @@ class DoctorController extends Controller
     // show available slots for a doctor on a specific date
     public function availableSlots(Request $request, Doctor $doctor)
     {
+        // validate request data
         $validator = Validator::make($request->all(), [
             'date' => 'required|date|after_or_equal:today',
         ]);
