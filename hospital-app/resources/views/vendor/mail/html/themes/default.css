@@ -1,3 +1,4 @@
+/* Base */
 
 body,
 body *:not(html):not(style):not(br):not(tr):not(code) {
@@ -8,14 +9,14 @@ body *:not(html):not(style):not(br):not(tr):not(code) {
 
 body {
     -webkit-text-size-adjust: none;
-    background-color: #F0F9FF;
+    background-color: #F0F9FF; /* خلفية سماوية فاتحة جداً */
     color: #334155;
     height: 100%;
     line-height: 1.4;
     margin: 0;
     padding: 0;
     width: 100% !important;
-    direction: rtl;
+    direction: rtl; /* دعم العربية */
     text-align: right;
 }
 
@@ -30,13 +31,14 @@ blockquote {
 }
 
 a {
-    color: #0EA5E9;
+    color: #0EA5E9; /* اللون السماوي */
 }
 
 a img {
     border: none;
 }
 
+/* Typography */
 
 h1 {
     color: #0F172A;
@@ -62,6 +64,7 @@ h3 {
     text-align: right;
 }
 
+/* Layout */
 
 .wrapper {
     background-color: #F0F9FF;
@@ -82,6 +85,7 @@ h3 {
     -premailer-width: 100%;
 }
 
+/* Header */
 
 .header {
     padding: 25px 0;
