@@ -12,6 +12,7 @@
             font-family: 'Tajawal', sans-serif;
         }
 
+        /* Gradient Background */
         .hospital-gradient {
             background: linear-gradient(135deg, #0EA5E9 0%, #3b82f6 100%);
             box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
