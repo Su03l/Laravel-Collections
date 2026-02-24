@@ -18,6 +18,7 @@
             box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
         }
 
+        /* Glow Text */
         .glow-text {
             text-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
         }
