@@ -25,4 +25,4 @@ class HospitalController extends Controller
         return $this->success(ClinicResource::collection($clinics), 'قائمة التخصصات');
     }
 }
-// test
+//test
