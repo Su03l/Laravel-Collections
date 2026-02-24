@@ -49,6 +49,7 @@ class DoctorController extends Controller
             return $this->error($validator->errors(), 422);
         }
 
+        //
         $dayName = date('l', strtotime($request->date));
         $schedule = $doctor->schedules()->where('day_of_week', $dayName)->first();
 
