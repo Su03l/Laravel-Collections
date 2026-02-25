@@ -169,6 +169,7 @@ class AppointmentController extends Controller
     // update the appointment
     public function update(Request $request, $id)
     {
+        // find the appointment 
         $appointment = Appointment::find($id);
 
         // check for appointment
