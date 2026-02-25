@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Admin\AdminClinicController;
 use App\Http\Controllers\Api\Admin\DoctorManagementController;
 use App\Http\Controllers\Api\Admin\UserManagementController;
+use App\Http\Controllers\Api\AppointmentController;
 use App\Http\Controllers\Api\DoctorController;
 use App\Http\Controllers\Api\HospitalController;
 use App\Http\Controllers\Auth\ChangePasswordController;
@@ -54,6 +55,14 @@ Route::middleware(['auth:sanctum', '2fa'])->group(function () {
     Route::get('/user', function (Request $request) {
         return new \App\Http\Resources\UserResource($request->user()->load('patientProfile'));
     });
+
+    // Appointment Routes
+    Route::get('/appointments/slots', [AppointmentController::class, 'getAvailableSlots']);
+    Route::post('/appointments/book', [AppointmentController::class, 'book']);
+    Route::get('/appointments/my-appointments', [AppointmentController::class, 'myAppointments']);
+    Route::post('/appointments/{id}/cancel', [AppointmentController::class, 'cancel']);
+    Route::post('/appointments/{id}/reschedule', [AppointmentController::class, 'update']);
+    Route::post('/appointments/{id}/attend', [AppointmentController::class, 'markAsAttended']);
 });
 
 // Admin Routes
