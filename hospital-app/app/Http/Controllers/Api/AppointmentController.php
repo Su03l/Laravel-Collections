@@ -143,6 +143,8 @@ class AppointmentController extends Controller
         return $this->success(null, 'Appointment cancelled successfully');
     }
 
+
+    // mark the patient as attended 
     public function markAsAttended($id)
     {
         $appointment = Appointment::find($id);
