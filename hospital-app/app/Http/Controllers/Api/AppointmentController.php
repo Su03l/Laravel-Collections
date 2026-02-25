@@ -83,7 +83,7 @@ class AppointmentController extends Controller
                 ->lockForUpdate()
                 ->exists();
 
-                // check if the slot is booked
+            // check if the slot is booked
             if ($exists) {
                 return $this->error('This slot has just been booked!', 409);
             }
@@ -160,6 +160,7 @@ class AppointmentController extends Controller
             return $this->error('Unauthorized to mark this patient as attended', 403);
         }
 
+        // update the status
         $appointment->update(['status' => 'completed']);
 
         return $this->success(null, 'Patient marked as attended, you can now start the report');
