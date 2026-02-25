@@ -21,6 +21,7 @@ class AppointmentController extends Controller
     // protected 
     protected $appointmentService;
 
+    // this for 
     public function __construct(AppointmentService $appointmentService)
     {
         $this->appointmentService = $appointmentService;
