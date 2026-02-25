@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AppointmentController extends Controller
 {
+    // to use the 1 resourse requiestr
     use HttpResponses;
 
     protected $appointmentService;
