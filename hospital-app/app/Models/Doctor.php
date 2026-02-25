@@ -26,16 +26,19 @@ class Doctor extends Model
         'is_active' => 'boolean',
     ];
 
+    // the doctor belongs to a hospital
     public function hospital()
     {
         return $this->belongsTo(Hospital::class);
     }
 
+    // the doctor belongs to a clinic
     public function clinic()
     {
         return $this->belongsTo(Clinic::class);
     }
 
+    // the doctor has many schedules
     public function schedules()
     {
         return $this->hasMany(DoctorSchedule::class);
