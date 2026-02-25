@@ -18,6 +18,7 @@ class AppointmentController extends Controller
     // to use the 1 resourse requiestr
     use HttpResponses;
 
+    // protected 
     protected $appointmentService;
 
     public function __construct(AppointmentService $appointmentService)
