@@ -28,6 +28,7 @@ class AppointmentService
             ->map(fn($time) => Carbon::parse($time)->format('H:i'))
             ->toArray();
 
+        // initialize slots array
         $slots = [];
         $start = Carbon::parse($schedule->start_time);
         $end = Carbon::parse($schedule->end_time);
