@@ -35,6 +35,7 @@ class AppointmentController extends Controller
             'date' => 'required|date|after_or_equal:today',
         ]);
 
+        // check for validation errors
         if ($validator->fails()) {
             return $this->error('Validation Error', 422, $validator->errors());
         }
