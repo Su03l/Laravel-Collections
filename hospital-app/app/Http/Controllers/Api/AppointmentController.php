@@ -104,6 +104,7 @@ class AppointmentController extends Controller
         });
     }
 
+    // my appointments 
     public function myAppointments()
     {
         $appointments = auth()->user()->appointments()
