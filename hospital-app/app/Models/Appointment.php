@@ -20,12 +20,12 @@ class Appointment extends Model
         'patient_notes',
     ];
 
-    // relationship to patient
     public function patient()
     {
         return $this->belongsTo(User::class, 'patient_id');
     }
 
+    // the appoinment belongs to a doctor
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);
