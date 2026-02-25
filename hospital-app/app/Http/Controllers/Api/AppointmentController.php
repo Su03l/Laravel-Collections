@@ -182,6 +182,7 @@ class AppointmentController extends Controller
             return $this->error('Unauthorized to update this appointment', 403);
         }
 
+        // validate the new date and time
         $validator = Validator::make($request->all(), [
             'new_date' => 'required|date|after_or_equal:today',
             'new_time' => 'required|date_format:H:i',
