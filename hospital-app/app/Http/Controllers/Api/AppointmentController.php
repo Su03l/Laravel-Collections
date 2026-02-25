@@ -115,6 +115,7 @@ class AppointmentController extends Controller
         return $this->success($appointments);
     }
 
+    // cancel an appointment
     public function cancel($id)
     {
         $appointment = Appointment::where('id', $id)
