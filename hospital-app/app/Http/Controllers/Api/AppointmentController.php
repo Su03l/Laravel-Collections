@@ -171,6 +171,7 @@ class AppointmentController extends Controller
     {
         $appointment = Appointment::find($id);
 
+        // check for appointment
         if (!$appointment) {
             return $this->error('Appointment not found', 404);
         }
