@@ -46,6 +46,7 @@ class AppointmentController extends Controller
         return $this->success($slots);
     }
 
+    // book an appointment 
     public function book(Request $request)
     {
         $validator = Validator::make($request->all(), [
