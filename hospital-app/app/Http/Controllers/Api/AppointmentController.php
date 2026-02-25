@@ -83,6 +83,7 @@ class AppointmentController extends Controller
                 ->lockForUpdate()
                 ->exists();
 
+                // check if the slot is booked
             if ($exists) {
                 return $this->error('This slot has just been booked!', 409);
             }
