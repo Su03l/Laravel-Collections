@@ -147,6 +147,7 @@ class AppointmentController extends Controller
     // mark the patient as attended 
     public function markAsAttended($id)
     {
+        // find the patient appointment
         $appointment = Appointment::find($id);
 
         if (!$appointment) {
