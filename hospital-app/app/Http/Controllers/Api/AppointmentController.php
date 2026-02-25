@@ -137,6 +137,7 @@ class AppointmentController extends Controller
             return $this->error('Sorry, you cannot cancel less than 2 hours before the appointment', 400);
         }
 
+        // 3. update the status 
         $appointment->update(['status' => 'cancelled']);
 
         return $this->success(null, 'Appointment cancelled successfully');
