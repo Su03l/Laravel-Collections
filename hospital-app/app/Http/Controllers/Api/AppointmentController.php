@@ -166,6 +166,7 @@ class AppointmentController extends Controller
         return $this->success(null, 'Patient marked as attended, you can now start the report');
     }
 
+    // update the appointment
     public function update(Request $request, $id)
     {
         $appointment = Appointment::find($id);
