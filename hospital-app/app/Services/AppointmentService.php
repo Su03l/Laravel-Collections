@@ -6,8 +6,11 @@ use App\Models\Setting;
 use Carbon\Carbon;
 use App\Models\Appointment;
 
-class AppointmentService {
-    public function generateAvailableSlots($doctor, $date) {
+class AppointmentService
+{
+    // build and return available slots for a doctor on a specific date
+    public function generateAvailableSlots($doctor, $date)
+    {
         // 1. Get appointment duration from settings (Default 15 min)
         $duration = Setting::where('key', 'appointment_duration')->value('value') ?? 15;
 
