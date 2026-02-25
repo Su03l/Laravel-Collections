@@ -27,6 +27,7 @@ class AppointmentController extends Controller
         $this->appointmentService = $appointmentService;
     }
 
+    // get the available slots for a doctor
     public function getAvailableSlots(Request $request)
     {
         $validator = Validator::make($request->all(), [
