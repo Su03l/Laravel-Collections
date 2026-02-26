@@ -29,6 +29,7 @@ class MedicalConsent extends Model
         return $this->belongsTo(User::class, 'patient_id');
     }
 
+    // the consent belongs to a doctor
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);
