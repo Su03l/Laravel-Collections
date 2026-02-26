@@ -67,6 +67,7 @@ class MedicalRecordController extends Controller
             return $this->error('Medical record already exists for this appointment', 409);
         }
 
+        // Create medical record
         return DB::transaction(function () use ($request, $appointment) {
             $record = MedicalRecord::create([
                 'appointment_id' => $appointment->id,
@@ -77,6 +78,7 @@ class MedicalRecordController extends Controller
                 'doctor_notes'   => $request->doctor_notes,
             ]);
 
+            // Save attachments
             if ($request->hasFile('files')) {
                 foreach ($request->file('files') as $index => $file) {
                     // Save to private disk
