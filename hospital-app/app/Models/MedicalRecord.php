@@ -25,6 +25,7 @@ class MedicalRecord extends Model
         return $this->belongsTo(Appointment::class);
     }
 
+    // the medical record belongs to a patient
     public function patient()
     {
         return $this->belongsTo(User::class, 'patient_id');
