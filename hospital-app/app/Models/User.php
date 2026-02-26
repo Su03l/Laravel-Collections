@@ -63,7 +63,7 @@ class User extends Authenticatable
         return $this->hasMany(Appointment::class, 'patient_id');
     }
 
-    // check fort
+    // check for the role of the user
     public function isDoctor()
     {
         return $this->role === 'doctor';
