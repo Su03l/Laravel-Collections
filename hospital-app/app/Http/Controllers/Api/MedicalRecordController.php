@@ -96,6 +96,7 @@ class MedicalRecordController extends Controller
         });
     }
 
+    // update the record for a patient
     public function updateRecord(Request $request, MedicalRecord $record)
     {
         $this->authorize('update', $record);
