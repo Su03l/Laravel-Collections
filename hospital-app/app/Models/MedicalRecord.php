@@ -37,6 +37,7 @@ class MedicalRecord extends Model
         return $this->belongsTo(Doctor::class);
     }
 
+    // the medical record has many attachments
     public function attachments()
     {
         return $this->hasMany(MedicalAttachment::class);
