@@ -51,6 +51,7 @@ class User extends Authenticatable
         return $this->hasOne(PatientProfile::class);
     }
 
+    // every user has one doctor profile
     public function doctorProfile()
     {
         return $this->hasOne(Doctor::class, 'id');
