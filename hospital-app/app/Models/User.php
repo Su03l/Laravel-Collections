@@ -45,6 +45,7 @@ class User extends Authenticatable
         ];
     }
 
+    // every user has one patient profile
     public function patientProfile()
     {
         return $this->hasOne(PatientProfile::class);
