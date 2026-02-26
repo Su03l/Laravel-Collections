@@ -17,6 +17,7 @@ class MedicalConsent extends Model
         'is_active',
     ];
 
+    // casts for the fields
     protected $casts = [
         'consented_at' => 'datetime',
         'is_active' => 'boolean',
