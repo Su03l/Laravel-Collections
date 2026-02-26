@@ -19,6 +19,7 @@ class MedicalAttachment extends Model
         'description',
     ];
 
+    // the attachment belongs to a medical record
     public function medicalRecord()
     {
         return $this->belongsTo(MedicalRecord::class);
