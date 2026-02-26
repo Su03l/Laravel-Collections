@@ -99,6 +99,7 @@ class MedicalRecordController extends Controller
     // update the record for a patient
     public function updateRecord(Request $request, MedicalRecord $record)
     {
+        // auth user
         $this->authorize('update', $record);
 
         // Check if 48 hours have passed
