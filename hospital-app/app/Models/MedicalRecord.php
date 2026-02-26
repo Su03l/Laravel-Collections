@@ -19,6 +19,7 @@ class MedicalRecord extends Model
         'doctor_notes',
     ];
 
+    // the medical record belongs to an appointment
     public function appointment()
     {
         return $this->belongsTo(Appointment::class);
