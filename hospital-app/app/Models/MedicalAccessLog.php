@@ -23,6 +23,7 @@ class MedicalAccessLog extends Model
         return $this->belongsTo(User::class);
     }
 
+    // the login activity belongs to a medical record
     public function medicalRecord()
     {
         return $this->belongsTo(MedicalRecord::class);
