@@ -143,6 +143,7 @@ class MedicalRecordController extends Controller
         return $this->error('File not found', 404);
     }
 
+    // get the record for a patient
     public function getRecord(Appointment $appointment)
     {
         $record = MedicalRecord::where('appointment_id', $appointment->id)->with('attachments')->first();
