@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\Admin\UserManagementController;
 use App\Http\Controllers\Api\AppointmentController;
 use App\Http\Controllers\Api\DoctorController;
 use App\Http\Controllers\Api\HospitalController;
+use App\Http\Controllers\Api\MedicalRecordController;
 use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -35,6 +36,9 @@ Route::get('/doctors', [DoctorController::class, 'index']);
 Route::get('/doctors/{doctor}', [DoctorController::class, 'show']);
 Route::post('/doctors/{doctor}/slots', [DoctorController::class, 'availableSlots']);
 
+// Shared Medical Record (Public Access via Token)
+Route::get('/shared/view/{token}', [MedicalRecordController::class, 'viewSharedRecord']);
+
 // OTP Verification with stricter Rate Limiting (3 attempts per 5 minutes)
 Route::middleware('throttle:3,5')->group(function () {
     Route::post('/verify-otp', VerifyOtpController::class);
@@ -63,6 +67,21 @@ Route::middleware(['auth:sanctum', '2fa'])->group(function () {
     Route::post('/appointments/{id}/cancel', [AppointmentController::class, 'cancel']);
     Route::post('/appointments/{id}/reschedule', [AppointmentController::class, 'update']);
     Route::post('/appointments/{id}/attend', [AppointmentController::class, 'markAsAttended']);
+
+    // Medical Records Routes
+    Route::post('/appointments/{appointment}/medical-record', [MedicalRecordController::class, 'storeRecord']);
+    Route::get('/appointments/{appointment}/medical-record', [MedicalRecordController::class, 'getRecord']);
+    Route::put('/medical-records/{record}', [MedicalRecordController::class, 'updateRecord']);
+    Route::get('/medical-attachments/{attachment}', [MedicalRecordController::class, 'downloadAttachment']);
+
+    // Day 5 Completion Routes
+    Route::get('/patients/{patient}/history', [MedicalRecordController::class, 'getPatientHistory']);
+    Route::get('/medical-records/{record}/prescription', [MedicalRecordController::class, 'downloadPrescription']);
+
+    // Consent & Sharing
+    Route::post('/medical-consent/grant', [MedicalRecordController::class, 'grantConsent']);
+    Route::post('/medical-consent/revoke', [MedicalRecordController::class, 'revokeConsent']);
+    Route::post('/medical-records/{record}/share', [MedicalRecordController::class, 'createShareToken']);
 });
 
 // Admin Routes
