@@ -23,6 +23,7 @@ class MedicalConsent extends Model
         'is_active' => 'boolean',
     ];
 
+    // the consent belongs to a patient
     public function patient()
     {
         return $this->belongsTo(User::class, 'patient_id');
