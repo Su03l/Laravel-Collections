@@ -135,6 +135,7 @@ class MedicalRecordController extends Controller
 
         $this->logAccess($attachment->medicalRecord->id, 'download_attachment');
 
+        // Check if the file exists
         if (Storage::disk('private')->exists($attachment->file_path)) {
              return Storage::disk('private')->download($attachment->file_path, $attachment->file_name);
         }
