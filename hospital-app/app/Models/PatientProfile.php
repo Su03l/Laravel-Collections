@@ -22,6 +22,7 @@ class PatientProfile extends Model
         'past_surgeries',
     ];
 
+    // every user has a patient profile
     public function user()
     {
         return $this->belongsTo(User::class);
