@@ -17,6 +17,7 @@ class MedicalAccessLog extends Model
         'user_agent',
     ];
 
+    // the login activity belongs to a user
     public function user()
     {
         return $this->belongsTo(User::class);
