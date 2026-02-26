@@ -18,6 +18,7 @@ class LoginActivity extends Model
         'created_at',
     ];
 
+    // the login activity belongs to a user
     public function user()
     {
         return $this->belongsTo(User::class);
