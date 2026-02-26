@@ -118,6 +118,7 @@ class MedicalRecordController extends Controller
             return $this->error('Validation Error', 422, $validator->errors());
         }
 
+        // Update medical record
         $record->update([
             'diagnosis' => $request->diagnosis,
             'prescription' => $request->prescription,
