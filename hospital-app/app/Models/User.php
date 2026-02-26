@@ -57,6 +57,7 @@ class User extends Authenticatable
         return $this->hasOne(Doctor::class, 'id');
     }
 
+    // every user has many login activities
     public function appointments()
     {
         return $this->hasMany(Appointment::class, 'patient_id');
