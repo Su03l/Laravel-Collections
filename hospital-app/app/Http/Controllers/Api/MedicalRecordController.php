@@ -35,6 +35,7 @@ class MedicalRecordController extends Controller
         ]);
     }
 
+    // the store record for a patient
     public function storeRecord(Request $request, Appointment $appointment)
     {
         // Validate request
