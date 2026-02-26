@@ -24,6 +24,7 @@ class MedicalRecordController extends Controller
 {
     use HttpResponses;
 
+    // log access for a medical record
     private function logAccess($recordId, $action = 'view', $userId = null) {
         MedicalAccessLog::create([
             'user_id' => $userId ?? auth()->id(),
