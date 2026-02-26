@@ -18,6 +18,7 @@ class Hospital extends Model
         'image',
     ];
 
+    // the hospital has many clinics
     public function doctors()
     {
         return $this->hasMany(Doctor::class);
