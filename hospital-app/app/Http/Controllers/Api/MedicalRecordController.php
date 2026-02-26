@@ -128,6 +128,7 @@ class MedicalRecordController extends Controller
         return $this->success($record, 'Medical record updated successfully');
     }
 
+    // download attachment
     public function downloadAttachment(MedicalAttachment $attachment)
     {
         $this->authorize('view', $attachment->medicalRecord);
