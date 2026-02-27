@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 
 class AttachmentController extends Controller
 {
+    // traits for http responses and logging medical access
     use HttpResponses, LogsMedicalAccess;
 
     public function download(MedicalAttachment $attachment)
