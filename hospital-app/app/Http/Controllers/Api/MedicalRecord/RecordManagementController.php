@@ -111,6 +111,7 @@ class RecordManagementController extends Controller
     // show record
     public function show(Appointment $appointment)
     {
+        // get record
         $record = MedicalRecord::where('appointment_id', $appointment->id)->with('attachments')->first();
 
         if (!$record) {
