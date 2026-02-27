@@ -28,6 +28,7 @@ class RecordManagementController extends Controller
             'descriptions.*' => 'nullable|string|max:255',
         ]);
 
+        //  Validate request
         if ($validator->fails()) {
             return $this->error('Validation Error', 422, $validator->errors());
         }
