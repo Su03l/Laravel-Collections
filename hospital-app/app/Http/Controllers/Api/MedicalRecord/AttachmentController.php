@@ -30,6 +30,7 @@ class AttachmentController extends Controller
         return $this->error('File not found', 404);
     }
 
+    // download prescription
     public function downloadPrescription(MedicalRecord $record)
     {
         // Check authorization (Patient or Doctor)
