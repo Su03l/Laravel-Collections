@@ -76,6 +76,7 @@ class RecordManagementController extends Controller
         });
     }
 
+    // update record 
     public function update(Request $request, MedicalRecord $record)
     {
         $this->authorize('update', $record);
