@@ -53,6 +53,7 @@ class ConsentController extends Controller
             return $this->error('Validation Error', 422, $validator->errors());
         }
 
+        // update consent
         MedicalConsent::where('patient_id', auth()->id())
             ->where('doctor_id', $request->doctor_id)
             ->update(['is_active' => false]);
