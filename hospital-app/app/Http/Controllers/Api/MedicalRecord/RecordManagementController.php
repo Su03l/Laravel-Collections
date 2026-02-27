@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 
 class RecordManagementController extends Controller
 {
+    // traits
     use HttpResponses, LogsMedicalAccess;
 
     public function store(Request $request, Appointment $appointment)
