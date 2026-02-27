@@ -32,6 +32,7 @@ class HistoryController extends Controller
             ->where('is_active', true)
             ->exists();
 
+        // 3. Check if the doctor has access to the patient's medical records   
         if (!$hasAppointment && !$hasConsent) {
             return $this->error(null, 'Unauthorized to view this patient history. Consent required.', 403);
         }
