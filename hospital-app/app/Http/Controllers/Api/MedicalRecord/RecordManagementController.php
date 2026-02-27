@@ -119,8 +119,10 @@ class RecordManagementController extends Controller
             return $this->error('Record not found', 404);
         }
 
+        //  check authorization
         $this->authorize('view', $record);
 
+        // log access
         $this->logAccess($record->id, 'view');
 
         return $this->success(new MedicalRecordResource($record));
