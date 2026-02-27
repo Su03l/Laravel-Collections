@@ -37,6 +37,7 @@ class HistoryController extends Controller
             return $this->error(null, 'Unauthorized to view this patient history. Consent required.', 403);
         }
 
+        // 4. Get the patient's medical records
         $records = MedicalRecord::where('patient_id', $patient->id)
             ->with(['doctor', 'attachments'])
             ->orderBy('created_at', 'desc')
