@@ -25,6 +25,7 @@ class SharingController extends Controller
             return $this->error('Only the patient can share their medical record.', 403);
         }
 
+        // generate token
         $token = Str::random(64);
         // Save token in cache for 24 hours
         Cache::put("share_token_{$token}", $record->id, now()->addHours(24));
