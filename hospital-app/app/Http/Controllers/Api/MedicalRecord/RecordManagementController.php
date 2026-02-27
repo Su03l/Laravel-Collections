@@ -48,6 +48,7 @@ class RecordManagementController extends Controller
             return $this->error('Medical record already exists for this appointment', 409);
         }
 
+        // Create record and using transaction to ensure data consistency
         return DB::transaction(function () use ($request, $appointment) {
             $record = MedicalRecord::create([
                 'appointment_id' => $appointment->id,
