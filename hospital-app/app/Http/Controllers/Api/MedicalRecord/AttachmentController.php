@@ -15,6 +15,7 @@ class AttachmentController extends Controller
     // traits for http responses and logging medical access
     use HttpResponses, LogsMedicalAccess;
 
+    // download attachment
     public function download(MedicalAttachment $attachment)
     {
         $this->authorize('view', $attachment->medicalRecord);
