@@ -13,6 +13,7 @@ use App\Traits\LogsMedicalAccess;
 
 class HistoryController extends Controller
 {
+    // 
     use HttpResponses, LogsMedicalAccess;
 
     public function getPatientHistory(User $patient) {
