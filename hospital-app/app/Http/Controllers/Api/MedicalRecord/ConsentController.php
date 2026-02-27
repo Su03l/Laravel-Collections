@@ -41,6 +41,7 @@ class ConsentController extends Controller
         return $this->success(null, 'Consent granted successfully to the doctor.');
     }
 
+    // revoke consent from a doctor
     public function revoke(Request $request)
     {
         $validator = Validator::make($request->all(), [
