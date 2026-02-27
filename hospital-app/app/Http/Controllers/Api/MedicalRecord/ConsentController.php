@@ -13,6 +13,7 @@ class ConsentController extends Controller
     // traits for http responses
     use HttpResponses;
 
+    // grant consent to a doctor    
     public function grant(Request $request)
     {
         $validator = Validator::make($request->all(), [
