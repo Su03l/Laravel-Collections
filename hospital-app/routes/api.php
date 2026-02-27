@@ -6,7 +6,11 @@ use App\Http\Controllers\Api\Admin\UserManagementController;
 use App\Http\Controllers\Api\AppointmentController;
 use App\Http\Controllers\Api\DoctorController;
 use App\Http\Controllers\Api\HospitalController;
-use App\Http\Controllers\Api\MedicalRecordController;
+use App\Http\Controllers\Api\MedicalRecord\AttachmentController;
+use App\Http\Controllers\Api\MedicalRecord\ConsentController;
+use App\Http\Controllers\Api\MedicalRecord\HistoryController;
+use App\Http\Controllers\Api\MedicalRecord\RecordManagementController;
+use App\Http\Controllers\Api\MedicalRecord\SharingController;
 use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
@@ -37,7 +41,7 @@ Route::get('/doctors/{doctor}', [DoctorController::class, 'show']);
 Route::post('/doctors/{doctor}/slots', [DoctorController::class, 'availableSlots']);
 
 // Shared Medical Record (Public Access via Token)
-Route::get('/shared/view/{token}', [MedicalRecordController::class, 'viewSharedRecord']);
+Route::get('/shared/view/{token}', [SharingController::class, 'viewShared']);
 
 // OTP Verification with stricter Rate Limiting (3 attempts per 5 minutes)
 Route::middleware('throttle:3,5')->group(function () {
@@ -69,19 +73,21 @@ Route::middleware(['auth:sanctum', '2fa'])->group(function () {
     Route::post('/appointments/{id}/attend', [AppointmentController::class, 'markAsAttended']);
 
     // Medical Records Routes
-    Route::post('/appointments/{appointment}/medical-record', [MedicalRecordController::class, 'storeRecord']);
-    Route::get('/appointments/{appointment}/medical-record', [MedicalRecordController::class, 'getRecord']);
-    Route::put('/medical-records/{record}', [MedicalRecordController::class, 'updateRecord']);
-    Route::get('/medical-attachments/{attachment}', [MedicalRecordController::class, 'downloadAttachment']);
+    Route::post('/appointments/{appointment}/medical-record', [RecordManagementController::class, 'store']);
+    Route::get('/appointments/{appointment}/medical-record', [RecordManagementController::class, 'show']);
+    Route::put('/medical-records/{record}', [RecordManagementController::class, 'update']);
 
-    // Day 5 Completion Routes
-    Route::get('/patients/{patient}/history', [MedicalRecordController::class, 'getPatientHistory']);
-    Route::get('/medical-records/{record}/prescription', [MedicalRecordController::class, 'downloadPrescription']);
+    // Attachments & Prescriptions
+    Route::get('/medical-attachments/{attachment}', [AttachmentController::class, 'download']);
+    Route::get('/medical-records/{record}/prescription', [AttachmentController::class, 'downloadPrescription']);
+
+    // History
+    Route::get('/patients/{patient}/history', [HistoryController::class, 'getPatientHistory']);
 
     // Consent & Sharing
-    Route::post('/medical-consent/grant', [MedicalRecordController::class, 'grantConsent']);
-    Route::post('/medical-consent/revoke', [MedicalRecordController::class, 'revokeConsent']);
-    Route::post('/medical-records/{record}/share', [MedicalRecordController::class, 'createShareToken']);
+    Route::post('/medical-consent/grant', [ConsentController::class, 'grant']);
+    Route::post('/medical-consent/revoke', [ConsentController::class, 'revoke']);
+    Route::post('/medical-records/{record}/share', [SharingController::class, 'createToken']);
 });
 
 // Admin Routes
