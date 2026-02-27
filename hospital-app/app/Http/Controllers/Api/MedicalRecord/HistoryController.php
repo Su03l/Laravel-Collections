@@ -16,7 +16,9 @@ class HistoryController extends Controller
     // 
     use HttpResponses, LogsMedicalAccess;
 
-    public function getPatientHistory(User $patient) {
+    // get patient history
+    public function getPatientHistory(User $patient)
+    {
         $doctor = auth()->user()->doctorProfile;
 
         // 1. Check if there is a direct appointment relationship
@@ -40,7 +42,9 @@ class HistoryController extends Controller
             ->get();
 
         // Log access for each record
-        foreach($records as $rec) { $this->logAccess($rec->id, 'view_history'); }
+        foreach ($records as $rec) {
+            $this->logAccess($rec->id, 'view_history');
+        }
 
         return $this->success(MedicalRecordResource::collection($records), 'Patient medical history');
     }
