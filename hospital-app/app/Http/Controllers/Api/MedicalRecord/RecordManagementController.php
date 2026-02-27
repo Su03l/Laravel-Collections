@@ -98,6 +98,7 @@ class RecordManagementController extends Controller
             return $this->error('Validation Error', 422, $validator->errors());
         }
 
+        // update record
         $record->update([
             'diagnosis' => $request->diagnosis,
             'prescription' => $request->prescription,
