@@ -114,6 +114,7 @@ class RecordManagementController extends Controller
         // get record
         $record = MedicalRecord::where('appointment_id', $appointment->id)->with('attachments')->first();
 
+        // check record
         if (!$record) {
             return $this->error('Record not found', 404);
         }
