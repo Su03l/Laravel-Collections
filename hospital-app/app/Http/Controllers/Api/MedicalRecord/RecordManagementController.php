@@ -108,6 +108,7 @@ class RecordManagementController extends Controller
         return $this->success($record, 'Medical record updated successfully');
     }
 
+    // show record
     public function show(Appointment $appointment)
     {
         $record = MedicalRecord::where('appointment_id', $appointment->id)->with('attachments')->first();
