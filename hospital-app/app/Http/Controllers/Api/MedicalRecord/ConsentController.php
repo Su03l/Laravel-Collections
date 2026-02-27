@@ -10,9 +10,11 @@ use Illuminate\Support\Facades\Validator;
 
 class ConsentController extends Controller
 {
+    // traits for http responses
     use HttpResponses;
 
-    public function grant(Request $request) {
+    public function grant(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'doctor_id' => 'required|exists:doctors,id',
         ]);
@@ -37,7 +39,8 @@ class ConsentController extends Controller
         return $this->success(null, 'Consent granted successfully to the doctor.');
     }
 
-    public function revoke(Request $request) {
+    public function revoke(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'doctor_id' => 'required|exists:doctors,id',
         ]);
