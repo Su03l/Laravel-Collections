@@ -86,6 +86,7 @@ class RecordManagementController extends Controller
             return $this->error('Cannot update medical record after 48 hours', 403);
         }
 
+        // Validate request 
         $validator = Validator::make($request->all(), [
             'diagnosis' => 'required|string',
             'prescription' => 'required|string',
