@@ -15,6 +15,7 @@ class SharingController extends Controller
     // traits
     use HttpResponses, LogsMedicalAccess;
 
+    // 
     public function createToken(MedicalRecord $record)
     {
         $this->authorize('view', $record); // Only the patient (or the doctor)
