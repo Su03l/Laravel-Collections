@@ -93,6 +93,7 @@ class RecordManagementController extends Controller
             'doctor_notes' => 'nullable|string',
         ]);
 
+        //  check validation
         if ($validator->fails()) {
             return $this->error('Validation Error', 422, $validator->errors());
         }
