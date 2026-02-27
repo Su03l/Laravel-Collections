@@ -22,14 +22,16 @@ class AttachmentController extends Controller
 
         $this->logAccess($attachment->medicalRecord->id, 'download_attachment');
 
+        // check if file exists in private disk
         if (Storage::disk('private')->exists($attachment->file_path)) {
-             return Storage::disk('private')->download($attachment->file_path, $attachment->file_name);
+            return Storage::disk('private')->download($attachment->file_path, $attachment->file_name);
         }
 
         return $this->error('File not found', 404);
     }
 
-    public function downloadPrescription(MedicalRecord $record) {
+    public function downloadPrescription(MedicalRecord $record)
+    {
         // Check authorization (Patient or Doctor)
         $this->authorize('view', $record);
 
