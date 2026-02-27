@@ -30,6 +30,7 @@ class SharingController extends Controller
         // Save token in cache for 24 hours
         Cache::put("share_token_{$token}", $record->id, now()->addHours(24));
 
+        // return share link
         return $this->success([
             'share_link' => url("/api/shared/view/{$token}"),
             'expires_at' => now()->addHours(24)
