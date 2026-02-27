@@ -20,6 +20,7 @@ class ConsentController extends Controller
             'doctor_id' => 'required|exists:doctors,id',
         ]);
 
+        // validate request 
         if ($validator->fails()) {
             return $this->error('Validation Error', 422, $validator->errors());
         }
