@@ -12,14 +12,16 @@ use Illuminate\Support\Str;
 
 class SharingController extends Controller
 {
+    // traits
     use HttpResponses, LogsMedicalAccess;
 
-    public function createToken(MedicalRecord $record) {
+    public function createToken(MedicalRecord $record)
+    {
         $this->authorize('view', $record); // Only the patient (or the doctor)
 
         // Only patient can share their own record
         if (auth()->id() !== $record->patient_id) {
-             return $this->error('Only the patient can share their medical record.', 403);
+            return $this->error('Only the patient can share their medical record.', 403);
         }
 
         $token = Str::random(64);
@@ -32,7 +34,8 @@ class SharingController extends Controller
         ], 'Secure share link created (valid for 24 hours)');
     }
 
-    public function viewShared($token) {
+    public function viewShared($token)
+    {
         $recordId = Cache::get("share_token_{$token}");
 
         if (!$recordId) {
