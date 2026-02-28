@@ -37,6 +37,7 @@ class ReviewController extends Controller
             return $this->error('Validation Error', 422, $validator->errors());
         }
 
+        // Create review
         $review = Review::create([
             'appointment_id' => $appointment->id,
             'patient_id' => auth()->id(),
