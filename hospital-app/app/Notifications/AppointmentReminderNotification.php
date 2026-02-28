@@ -38,6 +38,7 @@ class AppointmentReminderNotification extends Notification implements ShouldQueu
                     ->action('View Appointment', url('/appointments/' . $this->appointment->id));
     }
 
+    // to database
     public function toArray(object $notifiable): array
     {
         return [
