@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\MedicalRecordResource;
 use App\Models\Appointment;
 use App\Models\MedicalRecord;
+use App\Models\User;
+use App\Notifications\MedicalReportReady;
 use App\Traits\HttpResponses;
 use App\Traits\LogsMedicalAccess;
 use Illuminate\Http\Request;
@@ -72,11 +74,18 @@ class RecordManagementController extends Controller
                     ]);
                 }
             }
+
+            // Send Notification to Patient
+            $patient = User::find($appointment->patient_id);
+            if ($patient) {
+                $patient->notify(new MedicalReportReady($record));
+            }
+
             return $this->success($record, 'Medical record saved successfully');
         });
     }
 
-    // update record 
+    // update record
     public function update(Request $request, MedicalRecord $record)
     {
         $this->authorize('update', $record);
@@ -86,7 +95,7 @@ class RecordManagementController extends Controller
             return $this->error('Cannot update medical record after 48 hours', 403);
         }
 
-        // Validate request 
+        // Validate request
         $validator = Validator::make($request->all(), [
             'diagnosis' => 'required|string',
             'prescription' => 'required|string',
