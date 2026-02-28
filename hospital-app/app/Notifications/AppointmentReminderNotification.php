@@ -20,6 +20,7 @@ class AppointmentReminderNotification extends Notification implements ShouldQueu
         $this->appointment = $appointment;
     }
 
+    // via method for notification
     public function via(object $notifiable): array
     {
         return ['mail', 'database'];
