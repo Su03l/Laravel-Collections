@@ -81,6 +81,7 @@ class AppointmentController extends Controller
             return $this->error('You already have another appointment at this time', 400);
         }
 
+        // 3. Prevent double booking (Lock for Update)
         return DB::transaction(function () use ($request) {
             // Prevent double booking (Lock for Update)
             $exists = Appointment::where('doctor_id', $request->doctor_id)
