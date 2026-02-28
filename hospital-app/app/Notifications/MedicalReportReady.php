@@ -14,6 +14,7 @@ class MedicalReportReady extends Notification implements ShouldQueue
 
     protected $record;
 
+    // constructor
     public function __construct(MedicalRecord $record)
     {
         $this->record = $record;
