@@ -32,6 +32,7 @@ class ReviewController extends Controller
             'comment' => 'nullable|string|max:500',
         ]);
 
+        // Check validation
         if ($validator->fails()) {
             return $this->error('Validation Error', 422, $validator->errors());
         }
