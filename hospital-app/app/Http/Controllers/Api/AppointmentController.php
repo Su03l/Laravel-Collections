@@ -59,6 +59,7 @@ class AppointmentController extends Controller
             'time'      => 'required|date_format:H:i',
         ]);
 
+        // check for validation errors
         if ($validator->fails()) {
             return $this->error('Validation Error', 422, $validator->errors());
         }
