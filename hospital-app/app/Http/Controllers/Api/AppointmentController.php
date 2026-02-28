@@ -76,6 +76,7 @@ class AppointmentController extends Controller
             ->where('status', 'confirmed')
             ->exists();
 
+        // check if there is a conflict
         if ($hasConflict) {
             return $this->error('You already have another appointment at this time', 400);
         }
