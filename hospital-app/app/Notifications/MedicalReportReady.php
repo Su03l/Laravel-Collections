@@ -26,6 +26,7 @@ class MedicalReportReady extends Notification implements ShouldQueue
         return ['mail', 'database'];
     }
 
+    // to mail to send to mail
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
