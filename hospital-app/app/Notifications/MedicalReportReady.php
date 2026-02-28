@@ -37,6 +37,7 @@ class MedicalReportReady extends Notification implements ShouldQueue
                     ->action('View Report', url('/medical-records/' . $this->record->id));
     }
 
+    //
     public function toArray(object $notifiable): array
     {
         return [
