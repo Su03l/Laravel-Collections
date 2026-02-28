@@ -20,6 +20,7 @@ class MedicalReportReady extends Notification implements ShouldQueue
         $this->record = $record;
     }
 
+    // via method for notification
     public function via(object $notifiable): array
     {
         return ['mail', 'database'];
