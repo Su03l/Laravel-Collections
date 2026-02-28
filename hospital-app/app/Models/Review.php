@@ -17,6 +17,7 @@ class Review extends Model
         'comment',
     ];
 
+    // the review belongs to an appointment
     public function appointment()
     {
         return $this->belongsTo(Appointment::class);
