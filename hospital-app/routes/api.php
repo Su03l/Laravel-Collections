@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\MedicalRecord\ConsentController;
 use App\Http\Controllers\Api\MedicalRecord\HistoryController;
 use App\Http\Controllers\Api\MedicalRecord\RecordManagementController;
 use App\Http\Controllers\Api\MedicalRecord\SharingController;
+use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -75,6 +76,12 @@ Route::middleware(['auth:sanctum', '2fa'])->group(function () {
 
     // Reviews
     Route::post('/appointments/{appointment}/review', [ReviewController::class, 'store']);
+
+    // Notifications
+    Route::get('/notifications', [NotificationController::class, 'index']);
+    Route::get('/notifications/unread', [NotificationController::class, 'unread']);
+    Route::patch('/notifications/{id}/read', [NotificationController::class, 'markAsRead']);
+    Route::patch('/notifications/read-all', [NotificationController::class, 'markAllAsRead']);
 
     // Medical Records Routes
     Route::post('/appointments/{appointment}/medical-record', [RecordManagementController::class, 'store']);

@@ -7,6 +7,7 @@ use App\Models\Appointment;
 use App\Models\Review;
 use App\Traits\HttpResponses;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class ReviewController extends Controller
@@ -37,15 +38,23 @@ class ReviewController extends Controller
             return $this->error('Validation Error', 422, $validator->errors());
         }
 
-        // Create review
-        $review = Review::create([
-            'appointment_id' => $appointment->id,
-            'patient_id' => auth()->id(),
-            'doctor_id' => $appointment->doctor_id,
-            'rating' => $request->rating,
-            'comment' => $request->comment,
-        ]);
+        return DB::transaction(function () use ($request, $appointment) {
+            // Create review
+            $review = Review::create([
+                'appointment_id' => $appointment->id,
+                'patient_id' => auth()->id(),
+                'doctor_id' => $appointment->doctor_id,
+                'rating' => $request->rating,
+                'comment' => $request->comment,
+            ]);
 
-        return $this->success($review, 'Thank you for your review!');
+            // Update doctor stats
+            $doctor = $appointment->doctor;
+            $doctor->review_count = $doctor->reviews()->count();
+            $doctor->average_rating = $doctor->reviews()->avg('rating') ?: 0;
+            $doctor->save();
+
+            return $this->success($review, 'Thank you for your review!');
+        });
     }
 }
