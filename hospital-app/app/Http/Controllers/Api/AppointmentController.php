@@ -42,6 +42,7 @@ class AppointmentController extends Controller
             return $this->error('Validation Error', 422, $validator->errors());
         }
 
+        // find the doctor
         $doctor = Doctor::find($request->doctor_id);
         $slots = $this->appointmentService->generateAvailableSlots($doctor, $request->date);
 
