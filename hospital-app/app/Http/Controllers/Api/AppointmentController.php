@@ -31,6 +31,7 @@ class AppointmentController extends Controller
     // get the available slots for a doctor
     public function getAvailableSlots(Request $request)
     {
+        // validate the request
         $validator = Validator::make($request->all(), [
             'doctor_id' => 'required|exists:doctors,id',
             'date' => 'required|date|after_or_equal:today',
