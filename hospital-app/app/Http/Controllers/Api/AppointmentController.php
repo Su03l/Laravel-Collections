@@ -120,6 +120,7 @@ class AppointmentController extends Controller
     // my appointments
     public function myAppointments()
     {
+        // get the appointments
         $appointments = auth()->user()->appointments()
             ->with('doctor.hospital')
             ->orderBy('appointment_date', 'asc')
