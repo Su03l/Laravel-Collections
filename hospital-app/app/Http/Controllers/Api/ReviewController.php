@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ReviewController extends Controller
 {
+    // traits
     use HttpResponses;
 
     public function store(Request $request, Appointment $appointment)
