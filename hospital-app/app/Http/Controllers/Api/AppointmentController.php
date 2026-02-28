@@ -52,6 +52,7 @@ class AppointmentController extends Controller
     // book an appointment
     public function book(Request $request)
     {
+        // validate the request
         $validator = Validator::make($request->all(), [
             'doctor_id' => 'required|exists:doctors,id',
             'date'      => 'required|date|after_or_equal:today',
