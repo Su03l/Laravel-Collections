@@ -26,6 +26,7 @@ class AppointmentReminderNotification extends Notification implements ShouldQueu
         return ['mail', 'database'];
     }
 
+    // to mail to send to mail
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
