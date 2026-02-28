@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\Setting;
+use App\Notifications\NewAppointmentNotification;
 use App\Services\AppointmentService;
 use App\Traits\HttpResponses;
 use Carbon\Carbon;
@@ -18,10 +19,10 @@ class AppointmentController extends Controller
     // to use the 1 resourse requiestr
     use HttpResponses;
 
-    // protected 
+    // protected
     protected $appointmentService;
 
-    // this for 
+    // this for
     public function __construct(AppointmentService $appointmentService)
     {
         $this->appointmentService = $appointmentService;
@@ -46,7 +47,7 @@ class AppointmentController extends Controller
         return $this->success($slots);
     }
 
-    // book an appointment 
+    // book an appointment
     public function book(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -100,11 +101,17 @@ class AppointmentController extends Controller
                 'end_time' => $endTime,
             ]);
 
+            // Send Notification to Doctor
+            $doctor = Doctor::find($request->doctor_id);
+            if ($doctor && $doctor->user) {
+                $doctor->user->notify(new NewAppointmentNotification($appointment));
+            }
+
             return $this->success($appointment, 'Appointment booked successfully');
         });
     }
 
-    // my appointments 
+    // my appointments
     public function myAppointments()
     {
         $appointments = auth()->user()->appointments()
@@ -137,14 +144,14 @@ class AppointmentController extends Controller
             return $this->error('Sorry, you cannot cancel less than 2 hours before the appointment', 400);
         }
 
-        // 3. update the status 
+        // 3. update the status
         $appointment->update(['status' => 'cancelled']);
 
         return $this->success(null, 'Appointment cancelled successfully');
     }
 
 
-    // mark the patient as attended 
+    // mark the patient as attended
     public function markAsAttended($id)
     {
         // find the patient appointment
@@ -169,7 +176,7 @@ class AppointmentController extends Controller
     // update the appointment
     public function update(Request $request, $id)
     {
-        // find the appointment 
+        // find the appointment
         $appointment = Appointment::find($id);
 
         // check for appointment
@@ -188,7 +195,7 @@ class AppointmentController extends Controller
             'new_time' => 'required|date_format:H:i',
         ]);
 
-        // check if validation fails        
+        // check if validation fails
         if ($validator->fails()) {
             return $this->error('Validation Error', 422, $validator->errors());
         }

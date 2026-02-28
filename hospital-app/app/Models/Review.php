@@ -29,6 +29,7 @@ class Review extends Model
         return $this->belongsTo(User::class, 'patient_id');
     }
 
+    // the review belongs to a doctor
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);
