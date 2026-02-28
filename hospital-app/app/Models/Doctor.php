@@ -50,9 +50,13 @@ class Doctor extends Model
         return $this->hasMany(Appointment::class);
     }
 
-    // the doctor has many medical records
     public function user()
     {
         return $this->belongsTo(User::class, 'id');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 }
