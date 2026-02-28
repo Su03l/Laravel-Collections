@@ -136,6 +136,7 @@ class AppointmentController extends Controller
             ->where('patient_id', auth()->id())
             ->first();
 
+        // check for appointment
         if (!$appointment) {
             return $this->error('Appointment not found', 404);
         }
