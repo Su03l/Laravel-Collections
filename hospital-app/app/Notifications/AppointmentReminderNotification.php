@@ -14,6 +14,7 @@ class AppointmentReminderNotification extends Notification implements ShouldQueu
 
     protected $appointment;
 
+    // constructor
     public function __construct(Appointment $appointment)
     {
         $this->appointment = $appointment;
