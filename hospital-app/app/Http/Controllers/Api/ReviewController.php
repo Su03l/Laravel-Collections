@@ -26,6 +26,7 @@ class ReviewController extends Controller
             return $this->error(null, 'You have already reviewed this appointment.', 409);
         }
 
+        // Validate request
         $validator = Validator::make($request->all(), [
             'rating' => 'required|integer|min:1|max:5',
             'comment' => 'nullable|string|max:500',
