@@ -26,7 +26,7 @@ class DoctorFactory extends Factory
         ]);
 
         return [
-            'id' => $user->id, // ربط الدكتور بنفس الـ ID للمستخدم
+            'id' => $user->id, // link doctor to user model
             'hospital_id' => Hospital::factory(),
             'clinic_id' => Clinic::factory(),
             'name' => $user->name, // استخدام نفس الاسم
