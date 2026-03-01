@@ -14,6 +14,7 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
+        // create admin account
         User::create([
             'name' => 'Admin Manager',
             'email' => 'admin@hospitalsync.com',
