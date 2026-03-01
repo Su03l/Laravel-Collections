@@ -20,7 +20,7 @@ class ClinicFactory extends Factory
         ];
 
         return [
-            'name' => $this->faker->unique()->randomElement($clinics),
+            'name' => $this->faker->unique()->randomElement($clinics), // Random clinic name
             'description' => $this->faker->sentence(),
             'icon' => $this->faker->imageUrl(100, 100, 'icon', true),
         ];
