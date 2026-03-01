@@ -30,7 +30,7 @@ class DoctorFactory extends Factory
             'hospital_id' => Hospital::factory(), // Random hospital
             'clinic_id' => Clinic::factory(), // clinic factory
             'name' => $user->name, // استخدام نفس الاسم
-            'specialization' => $this->faker->randomElement(['جراحة قلب', 'طب أطفال', 'أسنان', 'جلدية']),
+            'specialization' => $this->faker->randomElement(['جراحة قلب', 'طب أطفال', 'أسنان', 'جلدية']), // Random specialization
             'bio' => $this->faker->paragraph(),
             'experience_years' => $this->faker->numberBetween(2, 25),
             'image' => 'https://via.placeholder.com/200x200.png?text=Doctor',
