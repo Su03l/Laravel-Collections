@@ -17,7 +17,7 @@ class HospitalFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->company() . ' Hospital',
+            'name' => $this->faker->company() . ' Hospital', // Random hospital name
             'address' => $this->faker->address(),
             'city' => $this->faker->randomElement(['الرياض', 'جدة', 'الدمام', 'مكة']),
             'image' => 'https://via.placeholder.com/400x300.png?text=Hospital',
