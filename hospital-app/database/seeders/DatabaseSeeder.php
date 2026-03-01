@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         // Create 5 hospitals
         $hospitals = Hospital::factory(5)->create();
 
-        // Create 10 clinics
+        // Create 20 clinics
         $clinics = Clinic::factory(20)->create();
 
         // Create 50 doctors and assign them randomly
