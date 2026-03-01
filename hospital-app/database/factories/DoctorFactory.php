@@ -33,7 +33,7 @@ class DoctorFactory extends Factory
             'specialization' => $this->faker->randomElement(['جراحة قلب', 'طب أطفال', 'أسنان', 'جلدية']), // Random specialization
             'bio' => $this->faker->paragraph(), // Random bio
             'experience_years' => $this->faker->numberBetween(2, 25), // Random experience years
-            'image' => 'https://via.placeholder.com/200x200.png?text=Doctor',
+            'image' => 'https://via.placeholder.com/200x200.png?text=Doctor', // Random image URL
             'is_active' => true,
         ];
     }
