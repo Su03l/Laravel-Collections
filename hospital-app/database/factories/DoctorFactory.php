@@ -27,7 +27,7 @@ class DoctorFactory extends Factory
 
         return [
             'id' => $user->id, // link doctor to user model
-            'hospital_id' => Hospital::factory(),
+            'hospital_id' => Hospital::factory(), // Random hospital
             'clinic_id' => Clinic::factory(),
             'name' => $user->name, // استخدام نفس الاسم
             'specialization' => $this->faker->randomElement(['جراحة قلب', 'طب أطفال', 'أسنان', 'جلدية']),
