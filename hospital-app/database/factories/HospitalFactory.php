@@ -20,7 +20,7 @@ class HospitalFactory extends Factory
             'name' => $this->faker->company() . ' Hospital', // Random hospital name
             'address' => $this->faker->address(), // Random address
             'city' => $this->faker->randomElement(['الرياض', 'جدة', 'الدمام', 'مكة']), // Random city
-            'image' => 'https://via.placeholder.com/400x300.png?text=Hospital',
+            'image' => 'https://via.placeholder.com/400x300.png?text=Hospital', // Random image URL
         ];
     }
 }
