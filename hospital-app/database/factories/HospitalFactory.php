@@ -18,7 +18,7 @@ class HospitalFactory extends Factory
     {
         return [
             'name' => $this->faker->company() . ' Hospital', // Random hospital name
-            'address' => $this->faker->address(),
+            'address' => $this->faker->address(), // Random address
             'city' => $this->faker->randomElement(['الرياض', 'جدة', 'الدمام', 'مكة']),
             'image' => 'https://via.placeholder.com/400x300.png?text=Hospital',
         ];
