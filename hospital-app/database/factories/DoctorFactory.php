@@ -34,7 +34,7 @@ class DoctorFactory extends Factory
             'bio' => $this->faker->paragraph(), // Random bio
             'experience_years' => $this->faker->numberBetween(2, 25), // Random experience years
             'image' => 'https://via.placeholder.com/200x200.png?text=Doctor', // Random image URL
-            'is_active' => true,
+            'is_active' => true, // Random active status
         ];
     }
 }
