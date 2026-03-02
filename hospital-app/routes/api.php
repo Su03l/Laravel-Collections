@@ -81,7 +81,7 @@ Route::middleware(['auth:sanctum', '2fa'])->group(function () {
 
     // Notifications
     Route::get('/notifications', [NotificationController::class, 'index']); // get notifications
-    Route::get('/notifications/unread', [NotificationController::class, 'unread']);
+    Route::get('/notifications/unread', [NotificationController::class, 'unread']); // get unread notifications
     Route::patch('/notifications/{id}/read', [NotificationController::class, 'markAsRead']);
     Route::patch('/notifications/read-all', [NotificationController::class, 'markAllAsRead']);
 
