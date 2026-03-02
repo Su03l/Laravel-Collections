@@ -59,7 +59,7 @@ Route::middleware(['auth:sanctum', '2fa'])->group(function () {
     Route::post('/change-password', ChangePasswordController::class); // to change the password
 
     // Patient Routes
-    Route::post('/update-medical-profile', UpdateProfileController::class);
+    Route::post('/update-medical-profile', UpdateProfileController::class); // update patient profile
     Route::post('/update-avatar', [AvatarController::class, 'update']);
 
     Route::get('/user', function (Request $request) {
