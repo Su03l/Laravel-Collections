@@ -77,7 +77,7 @@ Route::middleware(['auth:sanctum', '2fa'])->group(function () {
     Route::post('/appointments/{id}/attend', [AppointmentController::class, 'markAsAttended']); // to attend
 
     // Reviews
-    Route::post('/appointments/{appointment}/review', [ReviewController::class, 'store']);
+    Route::post('/appointments/{appointment}/review', [ReviewController::class, 'store']); // to review
 
     // Notifications
     Route::get('/notifications', [NotificationController::class, 'index']);
