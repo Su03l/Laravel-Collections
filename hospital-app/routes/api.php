@@ -24,6 +24,7 @@ use App\Http\Controllers\Auth\TwoFactorController;
 use App\Http\Controllers\Auth\VerifyOtpController;
 use App\Http\Controllers\Patient\AvatarController;
 use App\Http\Controllers\Patient\UpdateProfileController;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
