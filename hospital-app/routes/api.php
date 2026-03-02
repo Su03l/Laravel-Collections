@@ -55,7 +55,7 @@ Route::middleware('throttle:otp-requests')->post('/resend-otp', ResendOtpControl
 
 Route::middleware(['auth:sanctum', '2fa'])->group(function () {
     Route::post('/logout', LogoutController::class); //  logout user
-    Route::post('/toggle-2fa', TwoFactorController::class);
+    Route::post('/toggle-2fa', TwoFactorController::class); // toggle 2fa
     Route::post('/change-password', ChangePasswordController::class);
 
     // Patient Routes
