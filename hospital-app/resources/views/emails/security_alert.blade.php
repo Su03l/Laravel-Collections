@@ -1,3 +1,4 @@
+{{-- this for security alert when make a sign in--}}
 <x-mail::message>
 # مرحباً {{ $name }} 👋
 
