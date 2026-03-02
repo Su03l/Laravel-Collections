@@ -70,7 +70,7 @@ Route::middleware(['auth:sanctum', '2fa'])->group(function () {
 
     // Appointment Routes
     Route::get('/appointments/slots', [AppointmentController::class, 'getAvailableSlots']); // get available slots for appointment
-    Route::post('/appointments/book', [AppointmentController::class, 'book']);
+    Route::post('/appointments/book', [AppointmentController::class, 'book']); // book appointment
     Route::get('/appointments/my-appointments', [AppointmentController::class, 'myAppointments']);
     Route::post('/appointments/{id}/cancel', [AppointmentController::class, 'cancel']);
     Route::post('/appointments/{id}/reschedule', [AppointmentController::class, 'update']);
