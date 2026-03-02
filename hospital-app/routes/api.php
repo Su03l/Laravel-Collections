@@ -38,7 +38,7 @@ Route::middleware('throttle:10,1')->group(function () {
 // Public Routes (No Auth Required)
 Route::get('/hospitals', [HospitalController::class, 'index']); // get hospitals
 Route::get('/clinics', [HospitalController::class, 'getClinics']); // get clinics
-Route::get('/doctors', [DoctorController::class, 'index']);
+Route::get('/doctors', [DoctorController::class, 'index']); // get doctors
 Route::get('/doctors/{doctor}', [DoctorController::class, 'show']);
 Route::post('/doctors/{doctor}/slots', [DoctorController::class, 'availableSlots']);
 
