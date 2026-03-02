@@ -43,7 +43,7 @@ Route::get('/doctors/{doctor}', [DoctorController::class, 'show']); // get docto
 Route::post('/doctors/{doctor}/slots', [DoctorController::class, 'availableSlots']); // get available slots for doctor
 
 // Shared Medical Record (Public Access via Token)
-Route::get('/shared/view/{token}', [SharingController::class, 'viewShared']);
+Route::get('/shared/view/{token}', [SharingController::class, 'viewShared']); // to get the url share
 
 // OTP Verification with stricter Rate Limiting (3 attempts per 5 minutes)
 Route::middleware('throttle:3,5')->group(function () {
