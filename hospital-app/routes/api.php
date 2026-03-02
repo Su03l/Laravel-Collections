@@ -54,7 +54,7 @@ Route::middleware('throttle:3,5')->group(function () {
 Route::middleware('throttle:otp-requests')->post('/resend-otp', ResendOtpController::class);
 
 Route::middleware(['auth:sanctum', '2fa'])->group(function () {
-    Route::post('/logout', LogoutController::class);
+    Route::post('/logout', LogoutController::class); //  logout user
     Route::post('/toggle-2fa', TwoFactorController::class);
     Route::post('/change-password', ChangePasswordController::class);
 
