@@ -47,7 +47,7 @@ Route::get('/shared/view/{token}', [SharingController::class, 'viewShared']); //
 
 // OTP Verification with stricter Rate Limiting (3 attempts per 5 minutes)
 Route::middleware('throttle:3,5')->group(function () {
-    Route::post('/verify-otp', VerifyOtpController::class);
+    Route::post('/verify-otp', VerifyOtpController::class); // verify otp with rate limiting
 });
 
 // Resend OTP with custom Rate Limiter
