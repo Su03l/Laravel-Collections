@@ -32,7 +32,7 @@ Route::middleware('throttle:10,1')->group(function () {
     Route::post('/register', RegisterController::class); // register with rate limiting
     Route::post('/login', LoginController::class); // login with rate limiting
     Route::post('/forgot-password', ForgotPasswordController::class); // forgot password with rate limiting
-    Route::post('/reset-password', ResetPasswordController::class);
+    Route::post('/reset-password', ResetPasswordController::class); // reset password with rate limiting
 });
 
 // Public Routes (No Auth Required)
