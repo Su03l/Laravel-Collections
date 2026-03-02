@@ -1,3 +1,4 @@
+{{--the message content here--}}
 <x-mail::message>
 # مرحباً بك في Hospital App
 
