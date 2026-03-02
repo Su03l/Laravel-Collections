@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 
 // Auth Routes with Rate Limiting
 Route::middleware('throttle:10,1')->group(function () {
-    Route::post('/register', RegisterController::class);
+    Route::post('/register', RegisterController::class); // register with rate limiting
     Route::post('/login', LoginController::class);
     Route::post('/forgot-password', ForgotPasswordController::class);
     Route::post('/reset-password', ResetPasswordController::class);
