@@ -73,7 +73,7 @@ Route::middleware(['auth:sanctum', '2fa'])->group(function () {
     Route::post('/appointments/book', [AppointmentController::class, 'book']); // book appointment
     Route::get('/appointments/my-appointments', [AppointmentController::class, 'myAppointments']); // get my app
     Route::post('/appointments/{id}/cancel', [AppointmentController::class, 'cancel']); // cancel appointment
-    Route::post('/appointments/{id}/reschedule', [AppointmentController::class, 'update']);
+    Route::post('/appointments/{id}/reschedule', [AppointmentController::class, 'update']); // reschedule appointment
     Route::post('/appointments/{id}/attend', [AppointmentController::class, 'markAsAttended']);
 
     // Reviews
