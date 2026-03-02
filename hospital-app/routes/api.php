@@ -80,7 +80,7 @@ Route::middleware(['auth:sanctum', '2fa'])->group(function () {
     Route::post('/appointments/{appointment}/review', [ReviewController::class, 'store']); // to review
 
     // Notifications
-    Route::get('/notifications', [NotificationController::class, 'index']);
+    Route::get('/notifications', [NotificationController::class, 'index']); // get notifications
     Route::get('/notifications/unread', [NotificationController::class, 'unread']);
     Route::patch('/notifications/{id}/read', [NotificationController::class, 'markAsRead']);
     Route::patch('/notifications/read-all', [NotificationController::class, 'markAllAsRead']);
