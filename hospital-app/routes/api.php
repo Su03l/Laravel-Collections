@@ -40,7 +40,7 @@ Route::get('/hospitals', [HospitalController::class, 'index']); // get hospitals
 Route::get('/clinics', [HospitalController::class, 'getClinics']); // get clinics
 Route::get('/doctors', [DoctorController::class, 'index']); // get doctors
 Route::get('/doctors/{doctor}', [DoctorController::class, 'show']); // get doctor details
-Route::post('/doctors/{doctor}/slots', [DoctorController::class, 'availableSlots']);
+Route::post('/doctors/{doctor}/slots', [DoctorController::class, 'availableSlots']); // get available slots for doctor
 
 // Shared Medical Record (Public Access via Token)
 Route::get('/shared/view/{token}', [SharingController::class, 'viewShared']);
