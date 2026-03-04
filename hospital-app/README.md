@@ -198,6 +198,3 @@ Authorization: Bearer {token}
 
 ---
 
-<div align="center">
-  <sub>تم التطوير بواسطة فريق Hospital App © 2024</sub>
-</div>
