@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\Check2FA;
+use App\Http\Middleware\CheckRole;
 use App\Http\Middleware\IsAdmin;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Application;
@@ -20,6 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             '2fa' => Check2FA::class,
             'admin' => IsAdmin::class,
+            'role' => CheckRole::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
