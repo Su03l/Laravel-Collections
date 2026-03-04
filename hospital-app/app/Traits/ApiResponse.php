@@ -13,6 +13,7 @@ trait ApiResponse {
         ], $code);
     }
 
+    // for error
     public function error($data = null, $message = 'An error occurred', $code = 400) {
         return response()->json([
             'status' => 'error',
