@@ -32,7 +32,7 @@ use Illuminate\Support\Facades\Route;
 // Auth
 Route::middleware('throttle:10,1')->group(function () {
     Route::post('/register', RegisterController::class); // Register
-    Route::post('/login', LoginController::class);
+    Route::post('/login', LoginController::class); // Login
     Route::post('/forgot-password', ForgotPasswordController::class);
     Route::post('/reset-password', ResetPasswordController::class);
 });
