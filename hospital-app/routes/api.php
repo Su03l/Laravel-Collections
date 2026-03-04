@@ -71,7 +71,7 @@ Route::middleware(['auth:sanctum', '2fa'])->group(function () {
     Route::get('/notifications', [NotificationController::class, 'index']); // List Notifications
     Route::get('/notifications/unread', [NotificationController::class, 'unread']); // List Unread Notifications
     Route::patch('/notifications/{id}/read', [NotificationController::class, 'markAsRead']); // Mark Notification as Read
-    Route::patch('/notifications/read-all', [NotificationController::class, 'markAllAsRead']);
+    Route::patch('/notifications/read-all', [NotificationController::class, 'markAllAsRead']); // mark as a read
 
     /*
     |----------------------------------------------------------------------
