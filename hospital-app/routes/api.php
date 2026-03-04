@@ -51,7 +51,7 @@ Route::get('/shared/view/{token}', [SharingController::class, 'viewShared']); //
 Route::middleware('throttle:3,5')->group(function () {
     Route::post('/verify-otp', VerifyOtpController::class); // Verify OTP
 });
-Route::middleware('throttle:otp-requests')->post('/resend-otp', ResendOtpController::class);
+Route::middleware('throttle:otp-requests')->post('/resend-otp', ResendOtpController::class); // Resend OTP
 
 
 /*
