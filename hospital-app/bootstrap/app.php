@@ -26,7 +26,8 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->render(function (Throwable $e, Request $request) {
-            if ($request->is('api/*')) {
+            // إذا كان الطلب API أو يتوقع JSON
+            if ($request->is('api/*') || $request->wantsJson()) {
                 // معالجة خطأ عدم وجود السجل (404)
                 if ($e instanceof ModelNotFoundException || $e instanceof NotFoundHttpException) {
                     return response()->json([
@@ -41,6 +42,11 @@ return Application::configure(basePath: dirname(__DIR__))
                     'message' => 'حدث خطأ في النظام: ' . $e->getMessage(),
                     'code' => $e->getCode() ?: 500
                 ], 500);
+            }
+
+            // إذا كان الطلب من المتصفح (HTML)
+            if ($e instanceof NotFoundHttpException) {
+                return response()->view('errors.404', [], 404);
             }
         });
     })->create();
