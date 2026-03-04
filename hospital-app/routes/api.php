@@ -63,7 +63,7 @@ Route::middleware(['auth:sanctum', '2fa'])->group(function () {
 
     // User Profile
     Route::get('/user', function (Request $request) {
-        return new UserResource($request->user()->load('patientProfile'));
+        return new UserResource($request->user()->load('patientProfile'));  // Load patient profile
     });
     Route::post('/update-avatar', [AvatarController::class, 'update']);
 
