@@ -73,11 +73,7 @@ Route::middleware(['auth:sanctum', '2fa'])->group(function () {
     Route::patch('/notifications/{id}/read', [NotificationController::class, 'markAsRead']); // Mark Notification as Read
     Route::patch('/notifications/read-all', [NotificationController::class, 'markAllAsRead']); // mark as a read
 
-    /*
-    |----------------------------------------------------------------------
-    | 2. بوابة المريض (Patient Routes)
-    |----------------------------------------------------------------------
-    */
+    // for patient
     Route::prefix('patient')->middleware('role:patient')->group(function () {
         // Profile
         Route::post('/update-medical-profile', UpdateProfileController::class);
