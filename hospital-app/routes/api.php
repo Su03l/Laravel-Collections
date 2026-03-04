@@ -58,7 +58,7 @@ Route::middleware(['auth:sanctum', '2fa'])->group(function () {
 
     // Logout & Security
     Route::post('/logout', LogoutController::class); // Logout user
-    Route::post('/toggle-2fa', TwoFactorController::class);
+    Route::post('/toggle-2fa', TwoFactorController::class); // Toggle 2FA
     Route::post('/change-password', ChangePasswordController::class);
 
     // User Profile
