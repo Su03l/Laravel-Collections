@@ -68,7 +68,7 @@ Route::middleware(['auth:sanctum', '2fa'])->group(function () {
     Route::post('/update-avatar', [AvatarController::class, 'update']); // Update the avatar
 
     // Notifications (Common)
-    Route::get('/notifications', [NotificationController::class, 'index']);
+    Route::get('/notifications', [NotificationController::class, 'index']); // List Notifications
     Route::get('/notifications/unread', [NotificationController::class, 'unread']);
     Route::patch('/notifications/{id}/read', [NotificationController::class, 'markAsRead']);
     Route::patch('/notifications/read-all', [NotificationController::class, 'markAllAsRead']);
