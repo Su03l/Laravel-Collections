@@ -6,6 +6,7 @@ use App\Models\MedicalAccessLog;
 
 trait LogsMedicalAccess
 {
+    // for log medical access
     protected function logAccess($recordId, $action = 'view', $userId = null)
     {
         MedicalAccessLog::create([
