@@ -38,7 +38,7 @@ Route::middleware('throttle:10,1')->group(function () {
 });
 
 // Public Info
-Route::get('/hospitals', [HospitalController::class, 'index']);
+Route::get('/hospitals', [HospitalController::class, 'index']); // List Hospitals
 Route::get('/clinics', [HospitalController::class, 'getClinics']);
 Route::get('/doctors', [DoctorController::class, 'index']); // List Doctors
 Route::get('/doctors/{doctor}', [DoctorController::class, 'show']);
