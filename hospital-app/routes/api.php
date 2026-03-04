@@ -54,15 +54,10 @@ Route::middleware('throttle:3,5')->group(function () {
 Route::middleware('throttle:otp-requests')->post('/resend-otp', ResendOtpController::class); // Resend OTP
 
 
-/*
-|--------------------------------------------------------------------------
-| المسارات المحمية (Protected Routes - Sanctum & 2FA)
-|--------------------------------------------------------------------------
-*/
 Route::middleware(['auth:sanctum', '2fa'])->group(function () {
 
     // Logout & Security
-    Route::post('/logout', LogoutController::class);
+    Route::post('/logout', LogoutController::class); // Logout user
     Route::post('/toggle-2fa', TwoFactorController::class);
     Route::post('/change-password', ChangePasswordController::class);
 
