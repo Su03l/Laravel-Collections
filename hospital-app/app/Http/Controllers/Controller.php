@@ -6,5 +6,6 @@ use App\Traits\ApiResponse;
 
 abstract class Controller
 {
+    // to use the trait ApiResponse
     use ApiResponse;
 }
