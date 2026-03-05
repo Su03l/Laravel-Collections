@@ -49,6 +49,16 @@ class LoginRequest extends FormRequest
             ]);
         }
 
+        // --- الكود الجديد: التحقق من حالة الحساب ---
+        if (! Auth::user()->is_active) {
+            Auth::logout(); // نطرده فوراً
+
+            throw ValidationException::withMessages([
+                'email' => 'عذراً، تم حظر حسابك من قبل الإدارة. لا يمكنك تسجيل الدخول.',
+            ]);
+        }
+        // -------------------------------------------
+
         RateLimiter::clear($this->throttleKey());
     }
 

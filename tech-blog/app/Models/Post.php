@@ -4,12 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Post extends Model
 {
     use HasFactory;
 
     protected $fillable = ['user_id', 'title', 'slug', 'content'];
+
+    // --- الكود الجديد: الفلتر العالمي ---
+    protected static function booted(): void
+    {
+        // هذا الفلتر بيشتغل مع أي استعلام للمقالات
+        static::addGlobalScope('activeAuthor', function (Builder $builder) {
+            $builder->whereHas('user', function ($query) {
+                $query->where('is_active', true);
+            });
+        });
+    }
+    // ------------------------------------
 
     // المقال ينتمي لكاتب واحد
     public function user()

@@ -14,10 +14,19 @@
         <a href="{{ route('home') }}" class="text-3xl font-black tracking-tighter hover:underline">المدونة.</a>
         <div class="font-bold">
             @auth
-                <a href="{{ route('dashboard') }}" class="hover:underline">لوحة التحكم</a>
+                @if(auth()->user()->isAdmin())
+                    <a href="{{ route('admin.dashboard') }}" class="mr-6 border-b-4 border-black font-black text-lg hover:bg-black hover:text-white transition-colors px-2">👑 لوحة الإدارة</a>
+                @endif
+
+                <a href="{{ route('dashboard') }}" class="hover:underline font-bold text-lg">مقالاتي (لوحة التحكم)</a>
+
+                <form method="POST" action="{{ route('logout') }}" class="inline ml-6">
+                    @csrf
+                    <button type="submit" class="border-2 border-black px-4 py-1 font-bold hover:bg-black hover:text-white transition-all text-sm">خروج</button>
+                </form>
             @else
-                <a href="{{ route('login') }}" class="hover:underline ml-6">دخول</a>
-                <a href="{{ route('register') }}" class="border-2 border-black px-5 py-2 hover:bg-black hover:text-white transition-all">تسجيل حساب</a>
+                <a href="{{ route('login') }}" class="hover:underline ml-6 text-lg font-bold">دخول</a>
+                <a href="{{ route('register') }}" class="border-4 border-black px-5 py-2 font-black text-lg hover:bg-black hover:text-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-none transition-all duration-200">تسجيل حساب</a>
             @endauth
         </div>
     </nav>
