@@ -13,17 +13,35 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+
+            // البيانات الأساسية
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('username')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
 
+            // الصلاحيات والحالة
             $table->enum('role', ['admin', 'user'])->default('user');
+            $table->boolean('is_active')->default(true); // للتحكم بحظر المستخدمين
+
+            // البروفايل (Profile)
+            $table->string('avatar')->nullable(); // الصورة الشخصية
+            $table->string('header_image')->nullable(); // الغلاف (Header)
+            $table->text('bio')->nullable(); // النبذة
+            $table->date('date_of_birth')->nullable();
+            $table->string('country')->nullable();
+
+            // الروابط (Socials)
+            $table->string('website_url')->nullable();
+            $table->string('github_url')->nullable();
 
             $table->rememberToken();
             $table->timestamps();
         });
 
+        // جداول إعادة تعيين كلمة المرور والجلسات (تأتي افتراضياً مع لارافيل)
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');
