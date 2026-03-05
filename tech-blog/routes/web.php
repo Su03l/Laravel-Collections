@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\UserPostController;
+use App\Http\Controllers\AdminController;
 
 // الصفحة الرئيسية
 Route::get('/', [PostController::class, 'index'])->name('home');
@@ -35,6 +36,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/posts/{post}/edit', [UserPostController::class, 'edit'])->name('user.posts.edit');
     Route::put('/dashboard/posts/{post}', [UserPostController::class, 'update'])->name('user.posts.update');
     Route::delete('/dashboard/posts/{post}', [UserPostController::class, 'destroy'])->name('user.posts.destroy');
+});
+
+// مسارات لوحة تحكم الإدارة (Admin)
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+
+    // الصفحة الرئيسية للأدمن
+    Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+
+    // مسار حظر/تفعيل اليوزر
+    Route::patch('/users/{user}/toggle-status', [AdminController::class, 'toggleUserStatus'])->name('admin.users.toggle');
+
+    // مسار حذف مقال
+    Route::delete('/posts/{post}', [AdminController::class, 'destroyPost'])->name('admin.posts.destroy');
+
 });
 
 Route::middleware('auth')->group(function () {
