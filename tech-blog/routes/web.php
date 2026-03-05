@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\UserPostController;
 
 // الصفحة الرئيسية
 Route::get('/', [PostController::class, 'index'])->name('home');
@@ -21,9 +22,16 @@ Route::post('/post/{post}/comment', [CommentController::class, 'store'])
     ->name('comments.store');
 
 // مسارات لوحة التحكم (Breeze)
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+
+    // لوحة تحكم اليوزر (عرض مقالاته)
+    Route::get('/dashboard', [UserPostController::class, 'index'])->name('dashboard');
+
+    // إضافة مقال جديد
+    Route::get('/dashboard/posts/create', [UserPostController::class, 'create'])->name('user.posts.create');
+    Route::post('/dashboard/posts', [UserPostController::class, 'store'])->name('user.posts.store');
+
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
