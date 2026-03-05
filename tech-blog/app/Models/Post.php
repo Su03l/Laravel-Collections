@@ -47,4 +47,22 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+
+    // جلب التعليقات الأساسية فقط (بدون الردود)
+    public function rootComments()
+    {
+        return $this->hasMany(Comment::class)->whereNull('parent_id');
+    }
+
+    // علاقة اللايكات (Polymorphic)
+    public function likes()
+    {
+        return $this->morphMany(Like::class, 'likeable');
+    }
+
+    // علاقة المحفوظات
+    public function bookmarks()
+    {
+        return $this->hasMany(Bookmark::class);
+    }
 }
