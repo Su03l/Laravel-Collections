@@ -11,7 +11,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\BookmarkController;
 
 // الصفحة الرئيسية
-Route::get('/', [PostController::class, 'index'])->name('home');
+Route::get('/', [PostController::class, 'index'])->name('home'); // الصفحة الرئيسية
 
 // صفحة قراءة المقال بالكامل
 Route::get('/post/{slug}', [PostController::class, 'show'])->name('posts.show');
