@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
         User::factory(200)->create()->each(function ($user) use ($tagIds) {
 
             // إنشاء 10 مقالات لكل يوزر
-            Post::factory(10)->create(['user_id' => $user->id])->each(function ($post) use ($tagIds) {
+            Post::factory(10)->create(['user_id' => $user->id])->each(function ($post) use ($tagIds, $user) {
 
                 // ربط كل مقال بـ هاشتاقين عشوائية
                 // نستخدم array_rand للحصول على مفاتيح عشوائية، ثم نستخدم تلك المفاتيح للحصول على الـ IDs
