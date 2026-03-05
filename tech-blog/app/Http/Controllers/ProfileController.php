@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -26,13 +27,34 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        // Fill text fields
+        $user->fill($request->safe()->except(['avatar', 'header_image']));
+
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
         }
 
-        $request->user()->save();
+        // Handle avatar upload
+        if ($request->hasFile('avatar')) {
+            // Delete old avatar
+            if ($user->avatar) {
+                Storage::disk('public')->delete($user->avatar);
+            }
+            $user->avatar = $request->file('avatar')->store('avatars', 'public');
+        }
+
+        // Handle header image upload
+        if ($request->hasFile('header_image')) {
+            // Delete old header
+            if ($user->header_image) {
+                Storage::disk('public')->delete($user->header_image);
+            }
+            $user->header_image = $request->file('header_image')->store('headers', 'public');
+        }
+
+        $user->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
@@ -49,6 +71,14 @@ class ProfileController extends Controller
         $user = $request->user();
 
         Auth::logout();
+
+        // Clean up uploaded files
+        if ($user->avatar) {
+            Storage::disk('public')->delete($user->avatar);
+        }
+        if ($user->header_image) {
+            Storage::disk('public')->delete($user->header_image);
+        }
 
         $user->delete();
 

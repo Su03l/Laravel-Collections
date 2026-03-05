@@ -1,27 +1,28 @@
 <x-app-layout>
-    <div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-        <h2 class="text-4xl font-black border-b-8 border-black inline-block pb-2 mb-10">تعديل المقال</h2>
+        <p class="font-mono text-xs tracking-widest uppercase text-gray-400 mb-4" dir="ltr">// EDIT POST #{{ $post->id }}</p>
+        <h2 class="text-4xl font-black tracking-tighter uppercase mb-12 border-b-4 border-black pb-6">تعديل المقال</h2>
 
-        <form action="{{ route('user.posts.update', $post->id) }}" method="POST" class="border-4 border-black bg-white p-10 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] flex flex-col gap-8">
+        <form action="{{ route('user.posts.update', $post->id) }}" method="POST" class="space-y-6">
             @csrf
-            @method('PUT') <div>
-                <label class="block text-2xl font-black mb-2">عنوان المقال</label>
-                <input type="text" name="title" value="{{ old('title', $post->title) }}" required class="w-full border-4 border-black p-4 text-xl font-bold focus:ring-0 focus:outline-none focus:bg-gray-50 transition-colors">
-                @error('title') <span class="text-red-600 font-bold">{{ $message }}</span> @enderror
+            @method('PUT')
+
+            <div>
+                <label class="block font-mono text-xs uppercase tracking-widest text-gray-500 mb-3">عنوان المقال</label>
+                <input type="text" name="title" value="{{ old('title', $post->title) }}" required class="input-brutal text-2xl font-black">
+                @error('title') <span class="font-mono text-xs text-gray-500 mt-1 block">{{ $message }}</span> @enderror
             </div>
 
             <div>
-                <label class="block text-2xl font-black mb-2">المحتوى</label>
-                <textarea name="content" rows="10" required class="w-full border-4 border-black p-4 text-lg font-medium focus:ring-0 focus:outline-none focus:bg-gray-50 transition-colors">{{ old('content', $post->content) }}</textarea>
-                @error('content') <span class="text-red-600 font-bold">{{ $message }}</span> @enderror
+                <label class="block font-mono text-xs uppercase tracking-widest text-gray-500 mb-3">المحتوى</label>
+                <textarea name="content" rows="12" required class="input-brutal resize-none">{{ old('content', $post->content) }}</textarea>
+                @error('content') <span class="font-mono text-xs text-gray-500 mt-1 block">{{ $message }}</span> @enderror
             </div>
 
-            <div class="flex justify-between items-center">
-                <a href="{{ route('dashboard') }}" class="text-xl font-bold border-b-2 border-black hover:text-gray-600">إلغاء والعودة</a>
-                <button type="submit" class="border-4 border-black bg-black text-white text-2xl font-black py-4 px-8 hover:bg-white hover:text-black transition-all">
-                    حفظ التعديلات
-                </button>
+            <div class="flex gap-0">
+                <a href="{{ route('dashboard') }}" class="btn-brutal-outline text-center py-5 px-8 text-xs">إلغاء</a>
+                <button type="submit" class="btn-brutal flex-1 text-center py-5 text-base">حفظ التعديلات ←</button>
             </div>
         </form>
     </div>

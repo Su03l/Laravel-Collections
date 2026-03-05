@@ -1,112 +1,111 @@
 @extends('layouts.blog')
 
 @section('content')
-    <article class="border-4 border-black p-10 bg-white mb-16">
-        <h1 class="text-5xl font-black mb-8 leading-tight">{{ $post->title }}</h1>
-
-        <div class="flex flex-col md:flex-row justify-between md:items-center gap-6 border-b-4 border-black pb-6 mb-10">
-            <div class="text-lg font-bold flex flex-wrap items-center gap-6">
-                <a href="{{ route('author.show', $post->user->username) }}" class="hover:bg-black hover:text-white transition-colors px-2 py-1">
-                    ✍️ الكاتب: {{ $post->user->first_name }} {{ $post->user->last_name }}
+<!-- Article Header -->
+<div class="border-b-4 border-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <div class="flex flex-col gap-6">
+            <div class="flex items-center gap-4 font-mono text-xs tracking-widest uppercase text-gray-400" dir="ltr">
+                <span>{{ $post->created_at->format('Y.m.d // H:i') }}</span>
+                <span class="text-gray-300">|</span>
+                <span>{{ $post->comments->count() }} COMMENTS</span>
+                <span class="text-gray-300">|</span>
+                <span>{{ $post->likes->count() }} LIKES</span>
+            </div>
+            <h1 class="text-5xl lg:text-8xl font-black tracking-tighter leading-[0.85] uppercase">{{ $post->title }}</h1>
+            <div class="flex items-center gap-6">
+                <a href="{{ route('author.show', $post->user->username) }}" class="flex items-center gap-3 border-4 border-black px-4 py-2 hover:bg-black hover:text-white transition-colors">
+                    <div class="w-10 h-10 bg-black text-white flex items-center justify-center font-black text-lg">{{ Str::substr($post->user->first_name, 0, 1) }}</div>
+                    <div>
+                        <p class="font-bold text-sm">{{ $post->user->first_name }} {{ $post->user->last_name }}</p>
+                        <p class="font-mono text-xs text-gray-400" dir="ltr">{{ '@' . $post->user->username }}</p>
+                    </div>
                 </a>
-                <span>📅 {{ $post->created_at->format('Y/m/d') }}</span>
             </div>
-
-            @auth
-                <div class="flex flex-wrap gap-4">
-                    <form action="{{ route('likes.post', $post->id) }}" method="POST">
-                        @csrf
-                        <button type="submit" class="border-4 border-black px-6 py-2 font-black text-xl hover:bg-black hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1">
-                            {{ auth()->user()->hasLiked($post) ? '🖤' : '🤍' }} {{ $post->likes->count() }}
-                        </button>
-                    </form>
-
-                    <form action="{{ route('bookmarks.toggle', $post->id) }}" method="POST">
-                        @csrf
-                        <button type="submit" class="border-4 border-black px-6 py-2 font-black text-xl hover:bg-black hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1">
-                            {{ auth()->user()->hasBookmarked($post) ? '🔖 تم الحفظ' : '📑 حفظ' }}
-                        </button>
-                    </form>
-                </div>
-            @endauth
         </div>
+    </div>
+</div>
 
-        <div class="prose prose-lg max-w-none text-xl leading-loose font-medium mb-12">
-            {{ $post->content }}
-        </div>
+<!-- Article Content -->
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-xl max-w-none text-lg leading-relaxed whitespace-pre-line">
+        {{ $post->content }}
+    </div>
 
-        @if($post->attachments->count() > 0)
-            <div class="mt-12 border-t-4 border-dashed border-black pt-8 mb-12">
-                <h3 class="text-3xl font-black mb-8 border-b-2 border-black inline-block pb-2">المرفقات</h3>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    @foreach($post->attachments as $attachment)
-                        @php
-                            $ext = strtolower($attachment->file_type);
-                            $isImage = in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'webp']);
-                            $isVideo = in_array($ext, ['mp4', 'webm']);
-                        @endphp
-
-                        @if($isImage)
-                            <div class="border-4 border-black p-2 bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-                                <a href="{{ asset('storage/' . $attachment->file_path) }}" target="_blank">
-                                    <img src="{{ asset('storage/' . $attachment->file_path) }}" alt="{{ $attachment->file_name }}" class="w-full h-auto object-cover border-2 border-black hover:opacity-80 transition-opacity">
-                                </a>
-                            </div>
-                        @elseif($isVideo)
-                            <div class="border-4 border-black p-2 bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-                                <video controls class="w-full h-auto border-2 border-black">
-                                    <source src="{{ asset('storage/' . $attachment->file_path) }}" type="video/{{ $ext }}">
-                                    متصفحك لا يدعم تشغيل الفيديو.
-                                </video>
-                            </div>
-                        @else
-                            <a href="{{ asset('storage/' . $attachment->file_path) }}" target="_blank" class="border-4 border-black p-6 bg-white flex justify-between items-center hover:bg-black hover:text-white transition-all shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 group">
-                                <div class="overflow-hidden">
-                                    <p class="font-black text-lg truncate w-full" dir="ltr">{{ $attachment->file_name }}</p>
-                                    <p class="text-sm font-bold mt-1 text-gray-500 group-hover:text-gray-300">تحميل الملف ➔</p>
-                                </div>
-                                <span class="text-4xl font-black">📁</span>
-                            </a>
-                        @endif
-                    @endforeach
-                </div>
-            </div>
-        @endif
-
-        <div class="flex flex-wrap gap-3 border-t-4 border-black pt-6">
-            @foreach($post->tags as $tag)
-                <span class="text-base border-2 border-black px-4 py-2 font-bold bg-gray-100">#{{ $tag->name }}</span>
+    <!-- Attachments -->
+    @if($post->attachments->count() > 0)
+    <div class="mt-16 border-4 border-black p-8">
+        <h3 class="font-black text-xl uppercase mb-6 border-b-4 border-black pb-4">المرفقات</h3>
+        <div class="space-y-4">
+            @foreach($post->attachments as $attachment)
+            @if(Str::startsWith($attachment->mime_type, 'image'))
+            <img src="{{ asset('storage/' . $attachment->path) }}" alt="مرفق" class="border-4 border-black w-full">
+            @elseif(Str::startsWith($attachment->mime_type, 'video'))
+            <video controls class="border-4 border-black w-full">
+                <source src="{{ asset('storage/' . $attachment->path) }}" type="{{ $attachment->mime_type }}">
+            </video>
+            @else
+            <a href="{{ asset('storage/' . $attachment->path) }}" target="_blank" class="btn-brutal-outline text-xs py-2 px-6 inline-block">
+                📎 {{ $attachment->original_name }}
+            </a>
+            @endif
             @endforeach
         </div>
-    </article>
+    </div>
+    @endif
+</div>
 
-    <section class="border-4 border-black p-8 bg-gray-50">
-        <h3 class="text-3xl font-black mb-8 border-b-2 border-black inline-block pb-2">التعليقات ({{ $post->comments->count() }})</h3>
-
-        <div class="mb-12">
+<!-- Actions Bar -->
+<div class="border-t-4 border-b-4 border-black">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between py-6">
             @auth
-                <form action="{{ route('comments.store', $post->id) }}" method="POST" class="flex flex-col gap-4">
+            <div class="flex gap-0">
+                <!-- Like -->
+                <form action="{{ route('likes.post', $post->id) }}" method="POST">
                     @csrf
-                    <textarea name="content" rows="4" class="w-full border-4 border-black p-4 text-lg font-bold focus:ring-0 focus:outline-none focus:bg-gray-100 transition-colors" placeholder="اكتب تعليقك هنا..." required></textarea>
-                    <button type="submit" class="self-end border-4 border-black bg-black text-white px-8 py-3 text-xl font-black hover:bg-white hover:text-black transition-all">
-                        نشر التعليق
+                    <button type="submit" class="{{ auth()->user()->hasLiked($post) ? 'bg-black text-white' : 'bg-white text-black' }} border-4 border-black px-8 py-3 font-bold text-sm uppercase tracking-widest hover:bg-black hover:text-white transition-colors">
+                        ♥ {{ $post->likes->count() }}
                     </button>
                 </form>
-            @else
-                <div class="border-4 border-dashed border-black p-6 text-center">
-                    <p class="text-xl font-bold mb-4">يجب عليك تسجيل الدخول لتتمكن من إضافة تعليق والمشاركة في النقاش.</p>
-                    <a href="{{ route('login') }}" class="inline-block border-4 border-black bg-white px-6 py-2 font-black text-lg hover:bg-black hover:text-white transition-all">تسجيل الدخول</a>
-                </div>
-            @endauth
-        </div>
 
-        <div class="space-y-2">
-            @forelse($post->rootComments as $comment)
-                @include('posts.partials.comment', ['comment' => $comment, 'post' => $post])
-            @empty
-                <p class="text-xl font-bold text-center py-8 border-4 border-dashed border-black">لا توجد تعليقات حتى الآن. كُن أول من يشارك برأيه!</p>
-            @endforelse
+                <!-- Bookmark -->
+                <form action="{{ route('bookmarks.toggle', $post->id) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="{{ auth()->user()->hasBookmarked($post) ? 'bg-black text-white' : 'bg-white text-black' }} border-4 border-black border-r-0 px-8 py-3 font-bold text-sm uppercase tracking-widest hover:bg-black hover:text-white transition-colors">
+                        ★ حفظ
+                    </button>
+                </form>
+            </div>
+            @else
+            <div class="font-mono text-xs text-gray-400 tracking-widest uppercase">سجّل دخولك للتفاعل</div>
+            @endauth
+            <span class="font-mono text-xs text-gray-400 tracking-widest" dir="ltr">POST #{{ $post->id }}</span>
         </div>
-    </section>
+    </div>
+</div>
+
+<!-- Comments Section -->
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="flex items-center justify-between mb-12 border-b-4 border-black pb-6">
+        <h2 class="text-3xl font-black uppercase tracking-tight">التعليقات <span class="text-gray-300">({{ $post->comments->where('parent_id', null)->count() }})</span></h2>
+        <span class="font-mono text-xs text-gray-400 tracking-widest uppercase" dir="ltr">// DISCUSSION</span>
+    </div>
+
+    <!-- Add Comment -->
+    @auth
+    <form action="{{ route('comments.store', $post->id) }}" method="POST" class="mb-12 border-4 border-black p-6 brutal-shadow-sm">
+        @csrf
+        <textarea name="content" rows="4" required class="input-brutal mb-4 resize-none" placeholder="اكتب تعليقك هنا..."></textarea>
+        <button type="submit" class="btn-brutal text-xs py-3 px-8">أرسل التعليق</button>
+    </form>
+    @endauth
+
+    <!-- Comments List -->
+    <div class="space-y-6">
+        @foreach($post->comments->where('parent_id', null) as $comment)
+        @include('posts.partials.comment', ['comment' => $comment])
+        @endforeach
+    </div>
+</div>
 @endsection

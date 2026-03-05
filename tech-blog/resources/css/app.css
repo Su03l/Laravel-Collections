@@ -1,3 +1,85 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    /* Noise/Grain Texture */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+        background-size: 256px 256px;
+    }
+}
+
+@layer components {
+    /* Marquee Animation */
+    @keyframes marquee {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes marquee-rtl {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
+    .marquee {
+        animation: marquee-rtl 20s linear infinite;
+    }
+
+    /* Neo-Brutalist Card Shadow */
+    .brutal-shadow {
+        box-shadow: 8px 8px 0px 0px #000000;
+    }
+
+    .brutal-shadow-sm {
+        box-shadow: 4px 4px 0px 0px #000000;
+    }
+
+    .brutal-shadow:hover {
+        box-shadow: 12px 12px 0px 0px #000000;
+    }
+
+    /* Geometric Button */
+    .btn-brutal {
+        @apply bg-black text-white px-8 py-4 text-sm font-bold uppercase tracking-widest border-4 border-black transition-all duration-200;
+    }
+
+    .btn-brutal:hover {
+        @apply bg-white text-black;
+    }
+
+    .btn-brutal-outline {
+        @apply bg-white text-black px-8 py-4 text-sm font-bold uppercase tracking-widest border-4 border-black transition-all duration-200;
+    }
+
+    .btn-brutal-outline:hover {
+        @apply bg-black text-white;
+    }
+
+    /* Harsh input */
+    .input-brutal {
+        @apply w-full border-4 border-black p-4 text-sm bg-white focus:ring-0 focus:outline-none transition-colors;
+    }
+
+    .input-brutal:focus {
+        @apply bg-gray-50;
+    }
+}
