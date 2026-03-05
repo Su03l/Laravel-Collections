@@ -18,8 +18,15 @@ class PostController extends Controller
     // أضف هذه الدالة تحت دالة index
     public function show($slug)
     {
-        // سحب المقال مع الكاتب، الهاشتاقات، والتعليقات (مع أصحاب التعليقات)
-        $post = Post::with(['user', 'tags', 'comments.user'])->where('slug', $slug)->firstOrFail();
+        // جلب المقال مع (الكاتب، الهاشتاقات، اللايكات، والتعليقات الأساسية مع ردودها ولايكاتها)
+        $post = Post::with([
+            'user',
+            'tags',
+            'likes',
+            'rootComments.user',
+            'rootComments.replies.user',
+            'rootComments.likes'
+        ])->where('slug', $slug)->firstOrFail();
 
         return view('posts.show', compact('post'));
     }
