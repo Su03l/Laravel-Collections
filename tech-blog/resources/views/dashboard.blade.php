@@ -12,8 +12,12 @@
             </div>
         @endif
 
-        <div class="flex justify-between items-center border-b-8 border-black pb-4 mb-8">
-            <h2 class="text-4xl font-black">مقالاتي</h2>
+        <div class="flex flex-col md:flex-row justify-between items-center border-b-8 border-black pb-4 mb-8 gap-4">
+            <div class="flex items-center gap-6">
+                <h2 class="text-4xl font-black">مقالاتي</h2>
+                <a href="{{ route('user.bookmarks') }}" class="text-xl font-bold border-b-4 border-black hover:bg-black hover:text-white transition-colors px-2 py-1">المحفوظات 🔖</a>
+            </div>
+
             <a href="{{ route('user.posts.create') }}" class="border-4 border-black bg-black text-white px-6 py-2 text-xl font-black hover:bg-white hover:text-black transition-all">
                 + كتابة مقال جديد
             </a>

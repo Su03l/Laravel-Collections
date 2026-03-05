@@ -30,6 +30,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // لوحة تحكم اليوزر (عرض مقالاته)
     Route::get('/dashboard', [UserPostController::class, 'index'])->name('dashboard');
 
+    // مسار عرض المقالات المحفوظة في لوحة التحكم
+    Route::get('/dashboard/bookmarks', [BookmarkController::class, 'index'])->name('user.bookmarks');
+
     // إضافة مقال جديد
     Route::get('/dashboard/posts/create', [UserPostController::class, 'create'])->name('user.posts.create');
     Route::post('/dashboard/posts', [UserPostController::class, 'store'])->name('user.posts.store');
