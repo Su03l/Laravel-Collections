@@ -8,11 +8,11 @@
             <article class="border-4 border-black p-8 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-shadow duration-200 bg-white">
 
                 <h2 class="text-3xl font-black mb-4 leading-tight">
-                    <a href="#" class="hover:underline">{{ $post->title }}</a>
+                    <a href="{{ route('posts.show', $post->slug) }}" class="hover:underline">{{ $post->title }}</a>
                 </h2>
 
                 <div class="text-sm font-bold mb-6 flex flex-wrap items-center gap-6 border-b-2 border-dashed border-black pb-4">
-                    <span>✍️ الكاتب: {{ $post->user->first_name }} {{ $post->user->last_name }}</span>
+                    <span>✍️ الكاتب: <a href="{{ route('author.show', $post->user->username) }}" class="hover:underline">{{ $post->user->first_name }} {{ $post->user->last_name }}</a></span>
                     <span>📅 {{ $post->created_at->format('Y/m/d') }}</span>
                     <span>💬 {{ $post->comments->count() ?? rand(0, 15) }} تعليق</span>
                 </div>
@@ -25,7 +25,7 @@
                             <span class="text-sm border-2 border-black px-3 py-1 font-bold bg-gray-100">#{{ $tag->name }}</span>
                         @endforeach
                     </div>
-                    <a href="#" class="font-bold border-b-2 border-black hover:bg-black hover:text-white transition-colors px-2 py-1 text-lg">
+                    <a href="{{ route('posts.show', $post->slug) }}" class="font-bold border-b-2 border-black hover:bg-black hover:text-white transition-colors px-2 py-1 text-lg">
                         اقرأ المزيد ➔
                     </a>
                 </div>

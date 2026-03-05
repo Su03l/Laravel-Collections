@@ -1,0 +1,57 @@
+@extends('layouts.blog')
+
+@section('content')
+    <article class="border-4 border-black p-10 bg-white mb-16">
+        <h1 class="text-5xl font-black mb-8 leading-tight">{{ $post->title }}</h1>
+
+        <div class="text-lg font-bold mb-10 flex flex-wrap items-center gap-6 border-b-4 border-black pb-6">
+            <a href="{{ route('author.show', $post->user->username) }}" class="hover:bg-black hover:text-white transition-colors px-2 py-1">
+                ✍️ الكاتب: {{ $post->user->first_name }} {{ $post->user->last_name }}
+            </a>
+            <span>📅 {{ $post->created_at->format('Y/m/d') }}</span>
+        </div>
+
+        <div class="prose prose-lg max-w-none text-xl leading-loose font-medium mb-12">
+            {{ $post->content }}
+        </div>
+
+        <div class="flex flex-wrap gap-3 border-t-4 border-black pt-6">
+            @foreach($post->tags as $tag)
+                <span class="text-base border-2 border-black px-4 py-2 font-bold bg-gray-100">#{{ $tag->name }}</span>
+            @endforeach
+        </div>
+    </article>
+
+    <section class="border-4 border-black p-8 bg-gray-50">
+        <h3 class="text-3xl font-black mb-8 border-b-2 border-black inline-block pb-2">التعليقات ({{ $post->comments->count() }})</h3>
+
+        <div class="mb-12">
+            @auth
+                <form action="{{ route('comments.store', $post->id) }}" method="POST" class="flex flex-col gap-4">
+                    @csrf
+                    <textarea name="content" rows="4" class="w-full border-4 border-black p-4 text-lg font-bold focus:ring-0 focus:outline-none focus:bg-gray-100 transition-colors" placeholder="اكتب تعليقك هنا..." required></textarea>
+                    <button type="submit" class="self-end border-4 border-black bg-black text-white px-8 py-3 text-xl font-black hover:bg-white hover:text-black transition-all">
+                        نشر التعليق
+                    </button>
+                </form>
+            @else
+                <div class="border-4 border-dashed border-black p-6 text-center">
+                    <p class="text-xl font-bold mb-4">يجب عليك تسجيل الدخول لتتمكن من إضافة تعليق والمشاركة في النقاش.</p>
+                    <a href="{{ route('login') }}" class="inline-block border-4 border-black bg-white px-6 py-2 font-black text-lg hover:bg-black hover:text-white transition-all">تسجيل الدخول</a>
+                </div>
+            @endauth
+        </div>
+
+        <div class="space-y-6">
+            @foreach($post->comments as $comment)
+                <div class="border-2 border-black p-6 bg-white flex flex-col gap-2">
+                    <div class="flex justify-between items-center border-b border-gray-300 pb-2 mb-2">
+                        <a href="{{ route('author.show', $comment->user->username) }}" class="font-black hover:underline text-lg">{{ $comment->user->first_name }} {{ $comment->user->last_name }}</a>
+                        <span class="text-sm font-bold text-gray-500">{{ $comment->created_at->diffForHumans() }}</span>
+                    </div>
+                    <p class="text-lg font-medium">{{ $comment->content }}</p>
+                </div>
+            @endforeach
+        </div>
+    </section>
+@endsection
