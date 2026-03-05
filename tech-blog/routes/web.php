@@ -7,6 +7,8 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\UserPostController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\BookmarkController;
 
 // الصفحة الرئيسية
 Route::get('/', [PostController::class, 'index'])->name('home');
@@ -56,6 +58,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // مسارات اللايكات
+    Route::post('/posts/{post}/like', [LikeController::class, 'togglePost'])->name('likes.post');
+    Route::post('/comments/{comment}/like', [LikeController::class, 'toggleComment'])->name('likes.comment');
+
+    // مسار حفظ المقال
+    Route::post('/posts/{post}/bookmark', [BookmarkController::class, 'toggle'])->name('bookmarks.toggle');
 });
 
 require __DIR__.'/auth.php';

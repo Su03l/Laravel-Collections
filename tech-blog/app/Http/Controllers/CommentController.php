@@ -11,10 +11,12 @@ class CommentController extends Controller
     {
         $request->validate([
             'content' => 'required|string|max:1000',
+            'parent_id' => 'nullable|exists:comments,id', // حقل اختياري للردود
         ]);
 
         $post->comments()->create([
             'user_id' => auth()->id(), // اليوزر المسجل دخوله حالياً
+            'parent_id' => $request->parent_id, // إذا كان رد، بينحفظ رقم التعليق الأب
             'content' => $request->content,
         ]);
 
