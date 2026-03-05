@@ -15,6 +15,45 @@
             {{ $post->content }}
         </div>
 
+        @if($post->attachments->count() > 0)
+            <div class="mt-12 border-t-4 border-dashed border-black pt-8 mb-12">
+                <h3 class="text-3xl font-black mb-8 border-b-2 border-black inline-block pb-2">المرفقات</h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    @foreach($post->attachments as $attachment)
+                        @php
+                            $ext = strtolower($attachment->file_type);
+                            $isImage = in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'webp']);
+                            $isVideo = in_array($ext, ['mp4', 'webm']);
+                        @endphp
+
+                        @if($isImage)
+                            <div class="border-4 border-black p-2 bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                                <a href="{{ asset('storage/' . $attachment->file_path) }}" target="_blank">
+                                    <img src="{{ asset('storage/' . $attachment->file_path) }}" alt="{{ $attachment->file_name }}" class="w-full h-auto object-cover border-2 border-black hover:opacity-80 transition-opacity">
+                                </a>
+                            </div>
+                        @elseif($isVideo)
+                            <div class="border-4 border-black p-2 bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                                <video controls class="w-full h-auto border-2 border-black">
+                                    <source src="{{ asset('storage/' . $attachment->file_path) }}" type="video/{{ $ext }}">
+                                    متصفحك لا يدعم تشغيل الفيديو.
+                                </video>
+                            </div>
+                        @else
+                            <a href="{{ asset('storage/' . $attachment->file_path) }}" target="_blank" class="border-4 border-black p-6 bg-white flex justify-between items-center hover:bg-black hover:text-white transition-all shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 group">
+                                <div class="overflow-hidden">
+                                    <p class="font-black text-lg truncate w-full" dir="ltr">{{ $attachment->file_name }}</p>
+                                    <p class="text-sm font-bold mt-1 text-gray-500 group-hover:text-gray-300">تحميل الملف ➔</p>
+                                </div>
+                                <span class="text-4xl font-black">📁</span>
+                            </a>
+                        @endif
+                    @endforeach
+                </div>
+            </div>
+        @endif
+
         <div class="flex flex-wrap gap-3 border-t-4 border-black pt-6">
             @foreach($post->tags as $tag)
                 <span class="text-base border-2 border-black px-4 py-2 font-bold bg-gray-100">#{{ $tag->name }}</span>

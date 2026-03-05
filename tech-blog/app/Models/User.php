@@ -47,4 +47,28 @@ class User extends Authenticatable
     {
         return $this->role === 'admin';
     }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function bookmarks()
+    {
+        return $this->hasMany(Bookmark::class);
+    }
+
+    // دوال مساعدة (Helpers) تفك أزمة في الـ Blade
+    public function hasLiked($model)
+    {
+        return $this->likes()
+            ->where('likeable_id', $model->id)
+            ->where('likeable_type', get_class($model))
+            ->exists();
+    }
+
+    public function hasBookmarked($post)
+    {
+        return $this->bookmarks()->where('post_id', $post->id)->exists();
+    }
 }
