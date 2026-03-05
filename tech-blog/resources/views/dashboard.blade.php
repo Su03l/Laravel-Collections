@@ -6,6 +6,11 @@
                 ✅ {{ session('success') }}
             </div>
         @endif
+        @if(session('error'))
+            <div class="border-4 border-black bg-black text-white p-4 mb-8 font-bold text-xl">
+                ❌ {{ session('error') }}
+            </div>
+        @endif
 
         <div class="flex justify-between items-center border-b-8 border-black pb-4 mb-8">
             <h2 class="text-4xl font-black">مقالاتي</h2>
@@ -19,20 +24,30 @@
                 <table class="w-full text-right border-collapse">
                     <thead>
                         <tr class="border-b-4 border-black text-xl">
-                            <th class="py-4 font-black w-1/2">العنوان</th>
+                            <th class="py-4 font-black w-2/5">العنوان</th>
                             <th class="py-4 font-black">التاريخ</th>
-                            <th class="py-4 font-black">التعليقات</th>
-                            <th class="py-4 font-black text-center">الإجراءات</th>
+                            <th class="py-4 font-black text-center w-1/3">الإجراءات</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($posts as $post)
                             <tr class="border-b-2 border-dashed border-black hover:bg-gray-50 transition-colors">
                                 <td class="py-4 font-bold text-lg"><a href="{{ route('posts.show', $post->slug) }}" class="hover:underline" target="_blank">{{ $post->title }}</a></td>
-                                <td class="py-4 font-medium">{{ $post->created_at->format('Y/m/d') }}</td>
-                                <td class="py-4 font-medium">{{ $post->comments->count() }} تعليق</td>
-                                <td class="py-4 text-center">
-                                    <button class="border-2 border-black px-3 py-1 font-bold hover:bg-black hover:text-white transition-colors">تعديل</button>
+                                <td class="py-4 font-medium">{{ $post->created_at->format('Y/m/d h:i A') }}</td>
+                                <td class="py-4 text-center flex justify-center gap-2 items-center h-full mt-2">
+
+                                    @if($post->created_at->diffInHours(now()) < 2)
+                                        <a href="{{ route('user.posts.edit', $post->id) }}" class="border-2 border-black bg-white text-black px-4 py-1 font-bold hover:bg-black hover:text-white transition-colors">تعديل</a>
+                                    @else
+                                        <span class="border-2 border-gray-300 text-gray-400 px-4 py-1 font-bold cursor-not-allowed" title="انتهى وقت التعديل المسموح">مغلق</span>
+                                    @endif
+
+                                    <form action="{{ route('user.posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('هل أنت متأكد من حذف المقال نهائياً؟');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="border-2 border-black bg-black text-white px-4 py-1 font-bold hover:bg-white hover:text-black transition-colors">حذف</button>
+                                    </form>
+
                                 </td>
                             </tr>
                         @endforeach

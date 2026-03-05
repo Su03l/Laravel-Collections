@@ -31,6 +31,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/posts/create', [UserPostController::class, 'create'])->name('user.posts.create');
     Route::post('/dashboard/posts', [UserPostController::class, 'store'])->name('user.posts.store');
 
+    // المسارات الجديدة (التعديل والحذف)
+    Route::get('/dashboard/posts/{post}/edit', [UserPostController::class, 'edit'])->name('user.posts.edit');
+    Route::put('/dashboard/posts/{post}', [UserPostController::class, 'update'])->name('user.posts.update');
+    Route::delete('/dashboard/posts/{post}', [UserPostController::class, 'destroy'])->name('user.posts.destroy');
 });
 
 Route::middleware('auth')->group(function () {
