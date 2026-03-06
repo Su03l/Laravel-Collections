@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+
+    // fillable 
     protected $fillable = ['name', 'slug', 'color', 'type', 'icon'];
 
     // القسم يملك عدة أكواد
