@@ -45,7 +45,7 @@
         </div>
     </nav>
 
-    {{-- ══ HERO ══ --}}
+  <!-- hero sections -->
     <header class="hero">
         <div class="hero__tag"><span>◇</span> HOLOGRAPHIC SNIPPET INTERFACE</div>
         <h1 class="hero__title">
