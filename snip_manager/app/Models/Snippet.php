@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Snippet extends Model
 {
+    // the fillable 
     protected $fillable = ['category_id', 'title', 'code', 'description', 'language'];
 
     // الكود ينتمي لقسم واحد
