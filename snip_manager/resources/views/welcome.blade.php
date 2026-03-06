@@ -140,7 +140,7 @@
                             </div>
                         </div>
 
-                        {{-- Code block --}}
+                        <!-- Code block  -->
                         <div class="shard__code">
                             <div class="shard__code-bar">
                                 <div class="shard__dots"><i class="dot dot--r"></i><i class="dot dot--y"></i><i class="dot dot--g"></i></div>
