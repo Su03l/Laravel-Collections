@@ -27,8 +27,8 @@
     <div class="fog-orb fog-2"></div>
     <div class="fog-orb fog-3"></div>
 
-    {{-- ══ COMMAND BAR ══ --}}
-    @php
+<!--  for  the command bar  -->
+@php
     $totalSnippets = 0; $langMap = []; $catCount = 0;
     foreach($groupedCategories as $cats) { foreach($cats as $cat) { $catCount++; $totalSnippets += $cat->snippets->count(); foreach($cat->snippets as $s) { $langMap[$s->language] = true; } } }
     @endphp
