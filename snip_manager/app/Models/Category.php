@@ -10,7 +10,7 @@ class Category extends Model
     // fillable 
     protected $fillable = ['name', 'slug', 'color', 'type', 'icon'];
 
-    // snippets has many relationship 
+    // snippets has many relationship with category`
     public function snippets()
     {
         return $this->hasMany(Snippet::class);
