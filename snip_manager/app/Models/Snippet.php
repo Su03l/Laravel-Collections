@@ -9,7 +9,7 @@ class Snippet extends Model
     // the fillable 
     protected $fillable = ['category_id', 'title', 'code', 'description', 'language'];
 
-    // الكود ينتمي لقسم واحد
+    // the category belongs to snippet
     public function category()
     {
         return $this->belongsTo(Category::class);
