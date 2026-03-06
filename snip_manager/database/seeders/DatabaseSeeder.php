@@ -24,9 +24,9 @@ class DatabaseSeeder extends Seeder
         // Laravel Category
         $laravel = Category::create(['name' => 'Laravel', 'slug' => 'laravel', 'color' => '#ff2d20', 'type' => 'backend', 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg']);
         $this->addSnippet($laravel, 'Route Grouping', 'تجميع المسارات مع بادئة وميدل وير.', 'php', "Route::prefix('admin')->middleware('auth')->group(function () {\n    Route::get('/dashboard', [AdminController::class, 'index']);\n    Route::post('/settings', [AdminController::class, 'update']);\n});");
-        $this->addSnippet($laravel, 'Eloquent Scope', 'سكوب محلي لجلب المستخدمين النشطين فقط.', 'php', "public function scopeActive($query)\n{\n    return $query->where('status', 'active');\n}");
-        $this->addSnippet($laravel, 'API Resource', 'تحويل البيانات إلى JSON مخصص للـ API.', 'php', "public function toArray($request)\n{\n    return [\n        'id' => $this->id,\n        'name' => $this->name,\n        'email' => $this->email,\n        'created_at' => $this->created_at->diffForHumans(),\n    ];\n}");
-        $this->addSnippet($laravel, 'Model Observer', 'تنفيذ كود تلقائي عند إنشاء مستخدم جديد.', 'php', "public function created(User $user)\n{\n    Mail::to($user)->send(new WelcomeEmail());\n}");
+        $this->addSnippet($laravel, 'Eloquent Scope', 'سكوب محلي لجلب المستخدمين النشطين فقط.', 'php', "public function scopeActive(\$query)\n{\n    return \$query->where('status', 'active');\n}");
+        $this->addSnippet($laravel, 'API Resource', 'تحويل البيانات إلى JSON مخصص للـ API.', 'php', "public function toArray(\$request)\n{\n    return [\n        'id' => \$this->id,\n        'name' => \$this->name,\n        'email' => \$this->email,\n        'created_at' => \$this->created_at->diffForHumans(),\n    ];\n}");
+        $this->addSnippet($laravel, 'Model Observer', 'تنفيذ كود تلقائي عند إنشاء مستخدم جديد.', 'php', "public function created(User \$user)\n{\n    Mail::to(\$user)->send(new WelcomeEmail());\n}");
 
         // Node.js Category
         $node = Category::create(['name' => 'Node.js', 'slug' => 'node', 'color' => '#6cc24a', 'type' => 'backend', 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg']);
@@ -55,7 +55,7 @@ class DatabaseSeeder extends Seeder
         // Vue.js Category
         $vue = Category::create(['name' => 'Vue.js', 'slug' => 'vue', 'color' => '#4fc08d', 'type' => 'frontend', 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg']);
         $this->addSnippet($vue, 'v-for Loop', 'تكرار العناصر في القائمة.', 'html', "<ul>\n  <li v-for=\"item in items\" :key=\"item.id\">\n    {{ item.text }}\n  </li>\n</ul>");
-        $this->addSnippet($vue, 'Computed Property', 'حساب القيم ديناميكياً.', 'javascript', "computed: {\n  fullName() {\n    return `${this.firstName} ${this.lastName}`;\n  }\n}");
+        $this->addSnippet($vue, 'Computed Property', 'حساب القيم ديناميكياً.', 'javascript', "computed: {\n  fullName() {\n    return `\${this.firstName} \${this.lastName}`;\n  }\n}");
         $this->addSnippet($vue, 'Watcher', 'مراقبة تغير المتغيرات.', 'javascript', "watch: {\n  question(newQuestion, oldQuestion) {\n    this.getAnswer();\n  }\n}");
 
         // Tailwind/CSS Category
@@ -85,8 +85,8 @@ class DatabaseSeeder extends Seeder
         // MongoDB Category
         $mongo = Category::create(['name' => 'MongoDB', 'slug' => 'mongo', 'color' => '#47a248', 'type' => 'database', 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg']);
         $this->addSnippet($mongo, 'Find One', 'البحث عن مستند واحد.', 'javascript', "db.users.findOne({ username: 'jdoe' })");
-        $this->addSnippet($mongo, 'Aggregation', 'تجميع وحساب البيانات.', 'javascript', "db.orders.aggregate([\n  { $match: { status: 'A' } },\n  { $group: { _id: '$cust_id', total: { $sum: '$amount' } } }\n])");
-        $this->addSnippet($mongo, 'Update Many', 'تحديث عدة حقول دفعة واحدة.', 'javascript', "db.users.updateMany(\n  { age: { $lt: 18 } },\n  { $set: { status: 'minor' } }\n)");
+        $this->addSnippet($mongo, 'Aggregation', 'تجميع وحساب البيانات.', 'javascript', "db.orders.aggregate([\n  { \$match: { status: 'A' } },\n  { \$group: { _id: '\$cust_id', total: { \$sum: '\$amount' } } }\n])");
+        $this->addSnippet($mongo, 'Update Many', 'تحديث عدة حقول دفعة واحدة.', 'javascript', "db.users.updateMany(\n  { age: { \$lt: 18 } },\n  { \$set: { status: 'minor' } }\n)");
 
         $this->command->info('✅ تم حقن 30 كود برمجي بنجاح (10 Backend, 10 Frontend, 10 Database)!');
     }
