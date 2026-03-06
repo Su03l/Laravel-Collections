@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('snippets', function (Blueprint $table) {
             $table->id();
+            // ربط الكود بالقسم (علاقة One-to-Many)
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->string('title'); // عنوان الكود
+            $table->longText('code'); // الكود البرمجي نفسه
+            $table->text('description')->nullable(); // وصف قصير للكود
+            $table->string('language'); // اللغة البرمجية (بتفيدنا عشان نسوي Syntax Highlighting)
             $table->timestamps();
         });
     }

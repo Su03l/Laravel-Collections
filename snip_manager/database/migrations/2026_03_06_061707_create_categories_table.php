@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->string('name'); // اسم القسم (مثل: Laravel, React, CSS)
+            $table->string('slug')->unique(); // الرابط الصديق لمحركات البحث
+            $table->string('color')->default('#00ffcc'); // لون النيون اللي بنستخدمه في الفرونت إند
             $table->timestamps();
         });
     }
