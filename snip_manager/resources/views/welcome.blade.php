@@ -89,7 +89,7 @@
         </div>
     </header>
 
-    {{-- ══ SHARDS ══ --}}
+    <!--  for the shards -->
     <main class="main">
         @foreach($groupedCategories as $type => $categories)
         <section class="sector reveal" data-type="{{ $type }}">
