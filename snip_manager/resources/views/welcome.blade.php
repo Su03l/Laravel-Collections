@@ -27,8 +27,8 @@
     <div class="fog-orb fog-2"></div>
     <div class="fog-orb fog-3"></div>
 
-<!--  for  the command bar  -->
-@php
+    <!--  for  the command bar  -->
+    @php
     $totalSnippets = 0; $langMap = []; $catCount = 0;
     foreach($groupedCategories as $cats) { foreach($cats as $cat) { $catCount++; $totalSnippets += $cat->snippets->count(); foreach($cat->snippets as $s) { $langMap[$s->language] = true; } } }
     @endphp
@@ -45,7 +45,7 @@
         </div>
     </nav>
 
-  <!-- hero sections -->
+    <!-- hero sections -->
     <header class="hero">
         <div class="hero__tag"><span>◇</span> HOLOGRAPHIC SNIPPET INTERFACE</div>
         <h1 class="hero__title">
@@ -110,7 +110,7 @@
                     $hue = match($snippet->language){'php'=>270,'javascript'=>50,'sql'=>185,'css'=>215,'python'=>155,default=>200};
                     @endphp
                     <article class="shard reveal" data-title="{{ $snippet->title }}" data-desc="{{ $snippet->description }}" data-lang="{{ $snippet->language }}" style="--hue:{{ $hue }}">
-                        {{-- Overlays --}}
+                        <!-- Overlays -->
                         <div class="shard__scan"></div>
                         <div class="shard__refract"></div>
                         <div class="shard__schematic"></div>
