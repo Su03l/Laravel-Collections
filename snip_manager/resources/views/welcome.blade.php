@@ -151,7 +151,7 @@
                             </div>
                         </div>
 
-                        {{-- Particle canvas for assembly effect --}}
+                        <!-- Particle canvas for assembly effect  -->
                         <canvas class="shard__particles" width="0" height="0"></canvas>
                     </article>
                     @endforeach
