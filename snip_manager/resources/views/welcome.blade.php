@@ -115,7 +115,7 @@
                         <div class="shard__refract"></div>
                         <div class="shard__schematic"></div>
 
-                        {{-- Collapsed preview --}}
+                        <!-- Collapsed preview  -->
                         <div class="shard__preview">
                             <div class="shard__head">
                                 <div class="shard__id">
