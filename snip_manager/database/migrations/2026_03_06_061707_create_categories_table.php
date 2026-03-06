@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // اسم القسم (مثل: Laravel, React, CSS)
-            $table->string('slug')->unique(); // الرابط الصديق لمحركات البحث
-            $table->string('color')->default('#00ffcc'); // لون النيون اللي بنستخدمه في الفرونت إند
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->string('color')->default('#00ffcc');
+            // الحقول الجديدة:
+            $table->enum('type', ['frontend', 'backend', 'database']); // نوع القسم
+            $table->string('icon')->nullable(); // رابط أيقونة اللغة
+
             $table->timestamps();
         });
     }
