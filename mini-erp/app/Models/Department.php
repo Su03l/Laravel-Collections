@@ -9,6 +9,7 @@ class Department extends Model
 {
     use HasFactory;
 
+    // the requset fillable
     protected $fillable = ['name'];
 
     public function users()
