@@ -42,6 +42,7 @@ class User extends Authenticatable
         ];
     }
 
+    // the user belong to departement
     public function department()
     {
         return $this->belongsTo(Department::class);
