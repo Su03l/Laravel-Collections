@@ -42,7 +42,13 @@
                 <h1 class="text-5xl font-extrabold uppercase tracking-tight">قاعدة بيانات <br> <span class="text-gray-400">الموظفين.</span></h1>
             </div>
 
-            <div class="mt-6 md:mt-0">
+            <div class="mt-6 md:mt-0 flex gap-4">
+                <form action="{{ route('logout') }}" method="POST" class="inline-block">
+                    @csrf
+                    <button type="submit" class="brutal-border brutal-shadow-red bg-black text-white px-4 py-3 font-bold uppercase tracking-widest text-sm mono">
+                        [ تسجيل خروج ]
+                    </button>
+                </form>
                 <a href="{{ route('employees.create') }}" class="inline-block brutal-border brutal-shadow bg-black text-white px-8 py-3 font-bold uppercase tracking-widest text-sm mono">
                     + تسجيل موظف جديد
                 </a>
