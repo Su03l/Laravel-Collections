@@ -12,6 +12,7 @@ class IsAdmin
     // the middleware Auth
     public function handle(Request $request, Closure $next): Response
     {
+        // check if the user is admin
         if (auth()->check() && auth()->user()->role === 'admin') {
             return $next($request);
         }
