@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('departments', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->unique(); // اسم القسم (مثل: التقنية، المحاسبة)
-            $table->timestamps();
-        });
+        // This file is intentionally left empty to avoid conflict with 0000_00_00_000000_create_departments_table.php
+        // which was created to ensure the departments table exists before the users table.
     }
 
     /**
@@ -23,6 +20,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('departments');
+        //
     }
 };
