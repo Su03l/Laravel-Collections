@@ -13,6 +13,7 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
+        // create admin account
         User::create([
             'name' => 'المدير العام',
             'email' => 'admin@erp.com',
