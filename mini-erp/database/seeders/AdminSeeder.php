@@ -17,7 +17,7 @@ class AdminSeeder extends Seeder
         User::create([
             'name' => 'المدير العام',
             'email' => 'admin@erp.com',
-            'password' => Hash::make('password123'),
+            'password' => Hash::make('123123123'),
             'role' => 'admin',
             'is_active' => true,
         ]);
