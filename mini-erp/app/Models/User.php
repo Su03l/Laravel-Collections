@@ -24,6 +24,7 @@ class User extends Authenticatable
     ];
 
 
+    // the requset hidden
     protected $hidden = [
         'password',
         'remember_token',
