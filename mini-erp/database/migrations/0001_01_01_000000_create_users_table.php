@@ -15,8 +15,25 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+
+            // --- الحقول الجديدة للـ Mini ERP ---
+
+            // الصلاحية (admin أو employee)
+            $table->enum('role', ['admin', 'employee'])->default('employee');
+
+            // ربط الموظف بقسم (nullable لأن الأدمن ممكن ماله قسم)
+            $table->foreignId('department_id')->nullable()->constrained()->nullOnDelete();
+
+            // حالة الحساب (نشط، موقوف) عشان الأدمن يتحكم
+            $table->boolean('is_active')->default(true);
+
+            // تفاصيل وظيفية بسيطة
+            $table->decimal('salary', 10, 2)->nullable(); // الراتب
+            $table->date('join_date')->nullable(); // تاريخ الانضمام
+
+            // -----------------------------------
+
             $table->rememberToken();
             $table->timestamps();
         });
