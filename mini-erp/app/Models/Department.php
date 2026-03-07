@@ -12,6 +12,7 @@ class Department extends Model
     // the requset fillable
     protected $fillable = ['name'];
 
+    // the departement belong to users
     public function users()
     {
         return $this->hasMany(User::class);
