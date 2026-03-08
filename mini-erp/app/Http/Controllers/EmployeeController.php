@@ -54,9 +54,7 @@ class EmployeeController extends Controller
             ->with('success', 'تم تسجيل الموظف في النظام بنجاح!');
     }
 
-    /**
-     * 4. عرض صفحة (فورم) تعديل بيانات موظف
-     */
+
     public function edit(User $employee)
     {
         $departments = Department::all();
