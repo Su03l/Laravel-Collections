@@ -47,10 +47,13 @@ class AuthController extends Controller
         // تسجيل الخروج
         Auth::logout();
 
+        //  إلغاء الجلسة
         $request->session()->invalidate();
 
+        // تجديد رمز الجلسة
         $request->session()->regenerateToken();
 
+        // التوجيه إلى صفحة تسجيل الدخول
         return redirect()->route('login');
     }
 }
