@@ -44,6 +44,7 @@ class AuthController extends Controller
     // 3. تسجيل الخروج
     public function logout(Request $request)
     {
+        // تسجيل الخروج
         Auth::logout();
 
         $request->session()->invalidate();
