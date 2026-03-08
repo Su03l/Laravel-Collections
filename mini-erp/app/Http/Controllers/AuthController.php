@@ -12,6 +12,7 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
+    // 2. التحقق من البيانات وتوجيه المستخدم
     public function login(Request $request)
     {
         // التحقق من المدخلات
