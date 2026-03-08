@@ -97,6 +97,7 @@ class EmployeeController extends Controller
     }
 
     
+    // حذف الموظف نهائياً من النظام
     public function destroy(User $employee)
     {
         $employee->delete();
