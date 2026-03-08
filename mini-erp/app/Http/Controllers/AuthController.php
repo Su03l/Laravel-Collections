@@ -35,7 +35,6 @@ class AuthController extends Controller
             return redirect()->intended(route('employee.dashboard'));
         }
 
-        // إذا البيانات خطأ، نرجعه مع رسالة
         return back()->withErrors([
             'email' => 'بيانات الدخول غير صحيحة، تأكد من الإيميل أو الرقم السري.',
         ])->onlyInput('email');
