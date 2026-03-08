@@ -80,6 +80,7 @@ class EmployeeController extends Controller
             $rules['password'] = 'required|string|min:6';
         }
 
+        // التحقق من صحة البيانات
         $validated = $request->validate($rules);
 
         // إذا تم إدخال باسوورد جديد، نشفره ونحفظه
