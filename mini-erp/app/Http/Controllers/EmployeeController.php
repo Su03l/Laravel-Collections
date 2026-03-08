@@ -90,6 +90,7 @@ class EmployeeController extends Controller
             unset($validated['password']);
         }
 
+        // تحديث بيانات الموظف
         $employee->update($validated);
 
         return redirect()->route('employees.index')
