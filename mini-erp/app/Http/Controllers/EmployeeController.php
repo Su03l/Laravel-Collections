@@ -96,10 +96,11 @@ class EmployeeController extends Controller
             ->with('success', 'تم تحديث بيانات الموظف بنجاح.');
     }
 
-    
+
     // حذف الموظف نهائياً من النظام
     public function destroy(User $employee)
     {
+        // حذف الموظف
         $employee->delete();
 
         return redirect()->route('employees.index')
