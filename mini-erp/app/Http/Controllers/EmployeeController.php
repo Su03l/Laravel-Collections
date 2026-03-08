@@ -19,7 +19,7 @@ class EmployeeController extends Controller
         return view('employees.index', compact('employees'));
     }
 
-    
+    //  عرض صفحة (فورم) إضافة موظف جديد
     public function create()
     {
         // نجيب كل الأقسام عشان نعرضها في قائمة منسدلة (Select) في الفورم
@@ -53,7 +53,7 @@ class EmployeeController extends Controller
 
         // توجيه الأدمن لصفحة الموظفين مع رسالة نجاح
         return redirect()->route('employees.index')
-                         ->with('success', 'تم تسجيل الموظف في النظام بنجاح!');
+            ->with('success', 'تم تسجيل الموظف في النظام بنجاح!');
     }
 
     /**
@@ -99,7 +99,7 @@ class EmployeeController extends Controller
         $employee->update($validated);
 
         return redirect()->route('employees.index')
-                         ->with('success', 'تم تحديث بيانات الموظف بنجاح.');
+            ->with('success', 'تم تحديث بيانات الموظف بنجاح.');
     }
 
     /**
@@ -110,6 +110,6 @@ class EmployeeController extends Controller
         $employee->delete();
 
         return redirect()->route('employees.index')
-                         ->with('success', 'تم حذف ملف الموظف نهائياً.');
+            ->with('success', 'تم حذف ملف الموظف نهائياً.');
     }
 }
