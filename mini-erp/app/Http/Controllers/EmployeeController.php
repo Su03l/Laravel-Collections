@@ -28,9 +28,7 @@ class EmployeeController extends Controller
         return view('employees.create', compact('departments'));
     }
 
-    /**
-     * 3. استلام بيانات الفورم وحفظ الموظف في الداتابيز
-     */
+    // 
     public function store(Request $request)
     {
         // التحقق من صحة البيانات (Validation)
