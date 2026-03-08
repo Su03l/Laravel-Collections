@@ -31,6 +31,7 @@ class AuthController extends Controller
                 return redirect()->intended(route('employees.index'));
             }
 
+            // إذا كان موظف عادي، نوجهه للوحة الخاصة فيه
             return redirect()->intended(route('employee.dashboard'));
         }
 
