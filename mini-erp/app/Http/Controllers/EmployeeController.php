@@ -57,6 +57,7 @@ class EmployeeController extends Controller
     //  عرض صفحة (فورم) تعديل بيانات موظف
     public function edit(User $employee)
     {
+        // نجيب كل الأقسام عشان نعرضها في قائمة منسدلة (Select) في الفورم
         $departments = Department::all();
 
         return view('employees.edit', compact('employee', 'departments'));
