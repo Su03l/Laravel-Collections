@@ -26,7 +26,6 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            // التوجيه الذكي بناءً على الصلاحية (Role-based Redirect)
             if (auth()->user()->role === 'admin') {
                 return redirect()->intended(route('employees.index'));
             }
