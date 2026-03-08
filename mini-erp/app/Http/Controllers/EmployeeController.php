@@ -19,9 +19,7 @@ class EmployeeController extends Controller
         return view('employees.index', compact('employees'));
     }
 
-    /**
-     * 2. عرض صفحة (فورم) إضافة موظف جديد
-     */
+    
     public function create()
     {
         // نجيب كل الأقسام عشان نعرضها في قائمة منسدلة (Select) في الفورم
