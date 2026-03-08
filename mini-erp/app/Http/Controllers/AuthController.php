@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    // 1. عرض صفحة تسجيل الدخول
     public function showLoginForm()
     {
         return view('auth.login');
@@ -21,7 +22,6 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        // محاولة تسجيل الدخول
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
