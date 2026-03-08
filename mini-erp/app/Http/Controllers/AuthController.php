@@ -15,6 +15,7 @@ class AuthController extends Controller
     // 2. التحقق من البيانات وتوجيه المستخدم
     public function login(Request $request)
     {
+        // التحقق من المدخلات
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
