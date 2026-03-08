@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
-    /**
-     * 1. عرض قائمة جميع الموظفين
-     */
+    // 
     public function index()
     {
         // نستخدم with('department') لمنع مشكلة N+1 في استعلامات الداتابيز
