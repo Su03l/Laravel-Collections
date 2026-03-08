@@ -96,9 +96,7 @@ class EmployeeController extends Controller
             ->with('success', 'تم تحديث بيانات الموظف بنجاح.');
     }
 
-    /**
-     * 6. حذف الموظف نهائياً من النظام
-     */
+    
     public function destroy(User $employee)
     {
         $employee->delete();
