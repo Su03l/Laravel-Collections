@@ -62,9 +62,7 @@ class EmployeeController extends Controller
         return view('employees.edit', compact('employee', 'departments'));
     }
 
-    /**
-     * 5. استلام التعديلات وحفظها
-     */
+    
     public function update(Request $request, User $employee)
     {
         // التحقق من صحة البيانات (Validation)
