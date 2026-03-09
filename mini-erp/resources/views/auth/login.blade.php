@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +7,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'IBM Plex Sans Arabic', sans-serif;
-        }
+        body { font-family: 'IBM Plex Sans Arabic', sans-serif; }
     </style>
 </head>
-
 <body class="bg-gray-50 text-black antialiased min-h-screen flex flex-col justify-center items-center p-6">
 
     <div class="w-full max-w-md bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
 
-        <!-- Header -->
         <div class="bg-black p-8 text-center">
             <div class="w-16 h-16 bg-white rounded-xl flex items-center justify-center text-black font-bold text-3xl mx-auto mb-4 shadow-lg">
                 E
@@ -39,12 +34,12 @@
                 @csrf
 
                 @if($errors->any())
-                <div class="bg-red-50 border-r-4 border-red-500 p-4 rounded-lg flex items-start gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
-                    </svg>
-                    <span class="text-sm text-red-700 font-medium">{{ $errors->first() }}</span>
-                </div>
+                    <div class="bg-red-50 border-r-4 border-red-500 p-4 rounded-lg flex items-start gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                        </svg>
+                        <span class="text-sm text-red-700 font-medium">{{ $errors->first() }}</span>
+                    </div>
                 @endif
 
                 <div>
@@ -88,5 +83,4 @@
     </div>
 
 </body>
-
 </html>
