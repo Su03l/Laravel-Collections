@@ -14,7 +14,6 @@
 
     <div class="w-full max-w-md bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
 
-        <!-- Header -->
         <div class="bg-black p-8 text-center">
             <div class="w-16 h-16 bg-white rounded-xl flex items-center justify-center text-black font-bold text-3xl mx-auto mb-4 shadow-lg">
                 E
