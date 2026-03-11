@@ -22,7 +22,6 @@
             <p class="text-gray-400 text-sm mt-2">نظام إدارة الموارد البشرية</p>
         </div>
 
-        <!-- Form -->
         <div class="p-8 md:p-10">
 
             <div class="mb-8 text-center">
